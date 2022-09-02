@@ -15,24 +15,73 @@ Plug 'mhinz/vim-startify'
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
 
+" Color Schema
 " Plug 'altercation/vim-colors-solarized'
-" Plug 'mhinz/vim-startify'
 " Plug 'morhetz/gruvbox'
+Plug 'rakr/vim-one'
 
-" LSP 支持
-Plug 'dense-analysis/ale'
+" LSP Client 支持
+" Plug 'dense-analysis/ale'
+
+" coc.nvim
+Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 
 call plug#end()
 
-let g:ale_change_sign_column_color=1
-let g:ale_sign_column_always=0
-let g:ale_sign_error='>>'
-let g:ale_sign_warning='--'
+" Color Schema
+let g:one_allow_italics = 1 " 斜体的评论
+let g:airline_theme='one'
+colorscheme one
 
-let g:ale_python_pylsp_executable = 'pylsp'
-let g:ale_python_executable='python3'
-let g:ale_python_flake8_executable='python3'
-let g:ale_fixers={'python': ['yapf','isort']}
-let g:ale_linters={'python': ['flake8']}
+" let g:solarized_termtrans=1
+" let g:solarized_termcolors=256
+" let g:airline_solarized_bg='dark'
 
-let g:airline#extensions#ale#enabled=1
+" let g:ale_change_sign_column_color=1
+" 保持侧边栏可见
+" let g:ale_sign_column_always=0
+
+" 改变错误和警告标识符
+" let g:ale_sign_error='>>'
+" let g:ale_sign_warning='--'
+
+" let g:ale_python_pylsp_executable = 'pylsp'
+" let g:ale_python_executable='python3'
+" let g:ale_python_flake8_executable='python3'
+" let g:ale_fixers={'python': ['yapf','isort']}
+" let g:ale_linters={'python': ['flake8']}
+
+" let g:airline#extensions#ale#enabled=1
+
+" coc.nvim
+" -------------------------------------------------------------------------------------------------------------------------------------------------
+set nobackup
+set nowritebackup
+set updatetime=300
+set signcolumn=yes
+
+let g:coc_disable_startup_warning = 1
+
+autocmd FileType python let b:coc_root_patterns = ['.git', '.env', 'venv', '.venv', 'setup.cfg', 'setup.py', 'pyproject.toml', 'pyrightconfig.json']
+
+" 绑定 ctrl-space 触发补全
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <Tab> and <S-Tab> to navigate the completion list
+" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)

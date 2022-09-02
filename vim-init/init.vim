@@ -23,3 +23,6 @@ LoadScript init/init-basic.vim
 
 " 插件加载
 LoadScript init/init-plugins.vim
+
+" 自定义按键
+LoadScript init/init-keymaps.vim
