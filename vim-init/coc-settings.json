@@ -14,7 +14,7 @@
         // "explorer.icon.enableNerdfont": true,
         // "explorer.icon.source": "nerdfont.vim", // 好看的图标
         "explorer.keyMappings.global": {
-                "<cr>": ["expandable?", "collapse", "expand"],
-                "v": "open:vsplit"
+			"<cr>": ["wait", "expanded?", "collapse", "expand"],
+			"v": "open:vsplit"
         }
 }
