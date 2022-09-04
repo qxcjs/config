@@ -9,6 +9,9 @@ call plug#begin('~/.vim/plugged')
 " vim 中文文档
 Plug 'yianwillis/vimcdoc'
 
+" 注释
+Plug 'tpope/vim-commentary'
+
 " vim 启动界面
 Plug 'mhinz/vim-startify'
 
@@ -52,36 +55,3 @@ colorscheme one
 " let g:ale_linters={'python': ['flake8']}
 
 " let g:airline#extensions#ale#enabled=1
-
-" coc.nvim
-" -------------------------------------------------------------------------------------------------------------------------------------------------
-set nobackup
-set nowritebackup
-set updatetime=300
-set signcolumn=yes
-
-let g:coc_disable_startup_warning = 1
-
-autocmd FileType python let b:coc_root_patterns = ['.git', '.env', 'venv', '.venv', 'setup.cfg', 'setup.py', 'pyproject.toml', 'pyrightconfig.json']
-
-" 绑定 ctrl-space 触发补全
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <Tab> and <S-Tab> to navigate the completion list
-" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
