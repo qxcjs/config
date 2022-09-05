@@ -1,6 +1,24 @@
 let mapleader = "\<space>"
 
+" 缩写
+" quit/close q, 关闭当前
+" create c, 创建
+" only/other o, 保留当前,关闭其它
+" all a, 所有
+
 " autocmd FileType vim setlocal commentstring="\ %s
+
+" 光标移出时解除高亮设置
+au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+au VimEnter,WinEnter,BufWinEnter * setlocal cursorcolumn
+au WinLeave * setlocal nocursorline
+au WinLeave * setlocal nocursorcolumn
+
+" 快速打开vim配置项目 config/vim-init
+noremap <expr> <leader>ov ':tabnew ' . g:vim_init_home . '/init.vim<CR>'
+
+" 保存文件并刷新 vim 配置, :w<CR> 先保存命令, 使用 <bar> 代替 | 线, 执行 :so %<CR>
+noremap <leader>so :w<CR> <bar> :so ~/.vimrc<CR>
 
 au BufNewFile, BufRead *.py 
     \ set tabstop = 4
@@ -64,10 +82,66 @@ cnoremap <c-d> <del>
 cnoremap <c-_> <c-k>
 
 "----------------------------------------------------------------------
-" 缓存：插件 unimpaired 中定义了 [b, ]b 来切换缓存
+" 窗口window
+"----------------------------------------------------------------------
+" split the screens to up (horizontal), down (horizontal), left (vertical), right (vertical)
+noremap sj :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
+noremap sk :set splitbelow<CR>:split<CR>
+noremap sh :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
+noremap sl :set splitright<CR>:vsplit<CR>
+
+" 将所有分屏垂直放置
+noremap srh <C-w>b<C-w>K
+
+" 将所有分屏水平放置
+noremap srv <C-w>b<C-w>H
+
+" 上下分屏
+noremap sh <C-w>t<C-w>K
+
+" 左右分屏
+noremap sv <C-w>t<C-w>H
+
+" 移动
+noremap <silent><leader>ww <C-w>w
+noremap <silent><leader>wk <C-w>k
+noremap <silent><leader>wj <C-w>j
+noremap <silent><leader>wh <C-w>h
+noremap <silent><leader>wl <C-w>l
+
+" === 关闭 打开
+" 关闭当前窗口
+noremap <leader>wq <C-w>c
+
+" 关闭其他，保留当前
+noremap <leader>wo <C-w>o
+
+" 关闭所有
+noremap <leader>wa <C-w>o <bar> :q<CR>
+
+" Resize splits with arrow keys
+noremap <C-up> :res +5<CR>
+noremap <C-down> :res -5<CR>
+noremap <C-left> :vertical resize-5<CR>
+noremap <C-right> :vertical resize+5<CR>
+
+"----------------------------------------------------------------------
+" 缓存buffer：插件 unimpaired 中定义了 [b, ]b 来切换缓存
 "----------------------------------------------------------------------
 noremap <silent> <leader>bn :bn<cr>
 noremap <silent> <leader>bp :bp<cr>
+" 列出 buffer 列表
+nnoremap <silent> <leader>bl :ls<cr>
+
+" 打开一个新的buffer
+nnoremap <silent> <leader>bc :enew<cr>
+
+" 关闭当前 buffer
+nnoremap <silent> <leader>bq :bdelete<cr>
+
+" 重新打开关闭的buffer
+" noremap <leader>xr <C-w>o
+
 
 "----------------------------------------------------------------------
 " 切换tab <leader>+数字键 
@@ -137,5 +211,3 @@ endfunc
 
 noremap <silent><leader>tl :call Tab_MoveLeft()<cr>
 noremap <silent><leader>tr :call Tab_MoveRight()<cr>
-noremap <silent><m-left> :call Tab_MoveLeft()<cr>
-noremap <silent><m-right> :call Tab_MoveRight()<cr>

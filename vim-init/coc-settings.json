@@ -9,12 +9,31 @@
         // explorer ---------------------------------------------------------------------------
         "explorer.width": 30,
         "explorer.file.showHiddenFiles": true, // 显示隐藏文件
+		"explorer.buffer.showHiddenBuffers" : true, // 不显示vim buffer swp
         "explorer.file.reveal.auto": true, // 打开explorer时默认定位到当前打开的文件
-        "explorer.previewAction.onHover": "labeling",
-        // "explorer.icon.enableNerdfont": true,
-        // "explorer.icon.source": "nerdfont.vim", // 好看的图标
+        // "explorer.previewAction.onHover": false,
+        "explorer.icon.enableNerdfont": true, // 需要下载对应的 nerdfont 字体, https://www.nerdfonts.com/font-downloads
+        // "explorer.icon.source": "vim-devicons", // 好看的图标
+		"explorer.file.child.template": "[git | 2] [selection | clip | 1] [indent][icon | 1] [diagnosticError & 1][filename omitCenter 1][modified][readonly] [linkIcon & 1][link growRight 1 omitCenter 5]",
         "explorer.keyMappings.global": {
+			"zh": "toggleHidden",
+			"gk": ["wait", "expandablePrev"], // 上一个目录
+    		"gj": ["wait", "expandableNext"], // 下一个目录
+			"gl": ["wait", "expand:recursive"], // 递归打开所有目录
+    		"gh": ["wait", "collapse:recursive"], // 递归关闭所有目录
+			"gp": ["wait", "gotoParent"],
 			"<cr>": ["wait", "expanded?", "collapse", "expand"],
-			"v": "open:vsplit"
+			"e": "open",
+			"v": "open:vsplit",
+			"s": "open:split",
+			"t": "open:tab",
+			"a": "addFile",
+    		"A": "addDirectory",
+			"r": "rename",
+			"f": "search",
+			"R": "refresh",
+			"df": "delete",
+			"gf": "gotoSource:file",
+    		"gb": "gotoSource:buffer"
         }
 }
