@@ -23,6 +23,8 @@ Plug 'mhinz/vim-startify'
 " Plug 'morhetz/gruvbox'
 Plug 'rakr/vim-one'
 
+Plug 'skywind3000/vim-terminal-help'
+
 " LSP Client 支持
 " Plug 'dense-analysis/ale'
 

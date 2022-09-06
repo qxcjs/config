@@ -46,26 +46,21 @@ autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellesca
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
 "----------------------------------------------------------------------
-" INSERT 模式下使用 EMACS 键位
-"----------------------------------------------------------------------
-inoremap <c-a> <home>
-inoremap <c-e> <end>
-inoremap <c-d> <del>
-inoremap <c-_> <c-k>
-
-"----------------------------------------------------------------------
 " 设置 CTRL+HJKL 移动光标（INSERT 模式偶尔需要移动的方便些）
 " 使用 SecureCRT/XShell 等终端软件需设置：Backspace sends delete
 " 详见：http://www.skywind.me/blog/archives/2021
 "----------------------------------------------------------------------
-noremap <c-h> <left>
 noremap <c-j> <down>
 noremap <c-k> <up>
+noremap <c-h> <left>
 noremap <c-l> <right>
-inoremap <c-h> <left>
 inoremap <c-j> <down>
 inoremap <c-k> <up>
+inoremap <c-h> <left>
 inoremap <c-l> <right>
+inoremap <c-a> <home>
+inoremap <c-e> <end>
+inoremap <c-d> <del>
 
 "----------------------------------------------------------------------
 " 命令模式的快速移动
@@ -76,10 +71,7 @@ cnoremap <c-k> <up>
 cnoremap <c-l> <right>
 cnoremap <c-a> <home>
 cnoremap <c-e> <end>
-cnoremap <c-f> <c-d>
-cnoremap <c-b> <left>
 cnoremap <c-d> <del>
-cnoremap <c-_> <c-k>
 
 "----------------------------------------------------------------------
 " 窗口window
@@ -159,7 +151,7 @@ noremap <silent><leader>0 10gt<cr>
 
 
 "----------------------------------------------------------------------
-" 切换 tab ALT+N 
+" 切换 tab ALT+N  ALT 可以缩写为 <A- 或 <M-
 "----------------------------------------------------------------------
 noremap <silent><m-1> :tabn 1<cr>
 noremap <silent><m-2> :tabn 2<cr>
@@ -189,9 +181,9 @@ inoremap <silent><m-0> <ESC>:tabn 10<cr>
 
 noremap <silent> <leader>tc :tabnew<cr>
 noremap <silent> <leader>tq :tabclose<cr>
+noremap <silent> <leader>to :tabonly<cr>
 noremap <silent> <leader>tn :tabnext<cr>
 noremap <silent> <leader>tp :tabprev<cr>
-noremap <silent> <leader>to :tabonly<cr>
 
 " 左移 tab
 function! Tab_MoveLeft()
