@@ -6,6 +6,11 @@ else
 	let s:loaded = 1
 endif
 
+" fzf
+" let fzf_path = system('which fzf')
+" set rtp+=fzf_path
+set rtp+=/usr/bin/fzf
+
 " 取得本文件所在的目录
 let g:vim_init_home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 

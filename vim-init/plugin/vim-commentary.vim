@@ -6,5 +6,6 @@
 
 "为python和shell等添加注释
 autocmd FileType python,shell,coffee set commentstring=#\ %s
+
 "修改注释风格
-autocmd FileType java,php,go,c,cpp set commentstring=//\ %s
+autocmd FileType java,php,go,c,cpp,json set commentstring=//\ %s

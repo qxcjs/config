@@ -25,6 +25,9 @@ Plug 'rakr/vim-one'
 
 Plug 'skywind3000/vim-terminal-help'
 
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
 " LSP Client 支持
 " Plug 'dense-analysis/ale'
 

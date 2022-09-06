@@ -11,6 +11,8 @@ let &t_te.="\e[0 q"
 " 禁用vi兼容
 set nocompatible
 
+set modifiable
+
 " tabstop, shiftwidth, textwidth
 set ts=4 sw=4 tw=78 noet
 
