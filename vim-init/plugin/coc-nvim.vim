@@ -12,7 +12,7 @@ let g:coc_disable_startup_warning = 1
 autocmd FileType python let b:coc_root_patterns = ['.git', '.env', 'venv', '.venv', 'setup.cfg', 'setup.py', 'pyproject.toml', 'pyrightconfig.json']
 
 " 保存时自动格式化指定文件类型代码
-autocmd BufWrite *.py call CocActionAsync('format')
+" autocmd BufWrite *.py call CocActionAsync('format')
 
 " Use <Tab> and <S-Tab> to navigate the completion list
 " inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"

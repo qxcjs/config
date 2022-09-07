@@ -2,6 +2,7 @@
         "pyright.enable": true,
         "python.pythonPath": "/usr/bin/python3",
         "python.formatting.provider": "yapf",
+        "python.formatting.yapfPath": "/usr/local/bin/yapf",
         "python.linting.flake8Enabled":true,
         "python.analysis.useLibraryCodeForTypes": false,
         "python.analysis.typeCheckingMode": "off",
