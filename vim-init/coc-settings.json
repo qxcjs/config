@@ -1,14 +1,19 @@
 {
+  "suggest.autoTrigger": "always",
+
+  // diagnostic
   "diagnostic.checkCurrentLine": true,
   "diagnostic.messageTarget": "echo",
+
   // pyright
   "pyright.enable": true,
+  "python.analysis.useLibraryCodeForTypes": false,
+  // "pyright.disableDocumentation": false,
   "python.pythonPath": "python3", // path 会默认从 which python3 中去找, 所以不需要配置全路径
   "python.formatting.provider": "yapf",
-  "python.formatting.yapfPath": "yapf", // path 默认会从环境变量中去找, which yapf 的路径
+  "python.formatting.yapfPath": "~/.local/bin/yapf", // path 默认会从环境变量中去找, which yapf 的路径
   "python.linting.flake8Enabled": true,
-  "python.linting.flake8Args": ["--ignore", "E501"],
-  "python.analysis.useLibraryCodeForTypes": false,
+  "python.linting.flake8Args": ["--max-line-length=120", "--ignore=E501,F401"],
   "python.analysis.typeCheckingMode": "off",
 
   // explorer ---------------------------------------------------------------------------

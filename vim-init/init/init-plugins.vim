@@ -23,6 +23,8 @@ Plug 'mhinz/vim-startify'
 " Plug 'morhetz/gruvbox'
 Plug 'rakr/vim-one'
 
+Plug 'liuchengxu/vim-which-key'
+
 Plug 'skywind3000/vim-terminal-help'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
