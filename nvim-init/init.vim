@@ -1,3 +1,10 @@
+" An IDE layer for Neovim with sane defaults. Completely free and community driven.
+" https://github.com/LunarVim/LunarVim
+
+" A Neovim config designed from scratch to be understandable
+" https://github.com/LunarVim/Neovim-from-scratch
+" https://www.youtube.com/watch?v=SpexCBrZ1pQ&list=PLhoH5vyxr6Qq41NFL4GvhFp-WLd5xzIzZ&index=15
+
 " 取得本文件所在的目录
 let g:nvim_init_home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 
