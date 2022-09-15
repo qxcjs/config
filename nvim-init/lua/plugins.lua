@@ -1,10 +1,10 @@
 local packer = require("packer")
 packer.startup({
     function(use)
-        -- Packer 可以管理自己本身
+        -- Packer 包管理器
         use 'wbthomason/packer.nvim'
-        -- 你的插件列表...
-        use {"ellisonleao/gruvbox.nvim"}
+        -- 主题
+        use {"ellisonleao/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
         -- 左侧树
         use({
             "kyazdani42/nvim-tree.lua",
@@ -15,26 +15,38 @@ packer.startup({
             "akinsho/bufferline.nvim",
             requires = {"kyazdani42/nvim-web-devicons", "moll/vim-bbye"}
         })
-        -- 下面状态栏
+        -- status 状态栏展示
         use({
             "nvim-lualine/lualine.nvim",
             requires = {"kyazdani42/nvim-web-devicons"}
         })
+        -- 括号补全
+        use({"windwp/nvim-autopairs"})
+        -- 注释
+        use {'numToStr/Comment.nvim'}
+        use("arkav/lualine-lsp-progress")
+        -- 快速搜索
+        use {
+            'nvim-telescope/telescope.nvim',
+            requires = {"nvim-lua/plenary.nvim"}
+        }
         -- dashboard
         use("glepnir/dashboard-nvim")
         use("ahmedkhalf/project.nvim")
-        -- 语法高亮
+        -- 代码高亮, 增量选择, 自动缩进等功能
         use({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"})
 
         -- LSP
         use({
             "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim",
-            "neovim/nvim-lspconfig", "hrsh7th/nvim-cmp", -- �码补全
-            "hrsh7th/vim-vsnip", -- snippet 引擎
-            "hrsh7th/cmp-nvim-lsp", -- { name = nvim_lsp }
+            "neovim/nvim-lspconfig"
+        })
+        use({
+            "hrsh7th/nvim-cmp", "hrsh7th/vim-vsnip", "hrsh7th/cmp-nvim-lsp", -- { name = nvim_lsp }
             "hrsh7th/cmp-vsnip", "hrsh7th/cmp-buffer", -- { name = 'buffer' },
             "hrsh7th/cmp-path", -- { name = 'path' }
             "hrsh7th/cmp-cmdline" -- { name = 'cmdline' }
+
         })
         use({
             "jose-elias-alvarez/null-ls.nvim",
@@ -50,7 +62,7 @@ packer.startup({
     }
 })
 
--- 每次保存 plugins.lua 自动安装插件
+-- 保存时自动下载插件
 pcall(vim.cmd, [[
     augroup packer_user_config
     autocmd!

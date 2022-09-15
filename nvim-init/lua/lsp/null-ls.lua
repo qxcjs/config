@@ -9,11 +9,10 @@ local formatting = null_ls.builtins.formatting
 null_ls.setup({
     debug = false,
     sources = {
-        -- Formatting ---------------------
-        -- for shell
-        formatting.shfmt, -- StyLua
-        -- formatting.stylua, 
-        formatting.lua_format, formatting.autopep8, -- for python
+        -- Formatting
+        formatting.shfmt, -- shfmt for shell
+        formatting.lua_format, -- stylua for lua 
+        formatting.autopep8, -- autopep8 for python
         formatting.prettier.with({ -- 只比默认配置少了 markdown
             filetypes = {
                 "javascript", "javascriptreact", "typescript",

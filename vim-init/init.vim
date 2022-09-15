@@ -26,15 +26,17 @@ set rtp+=~/.vim
 LoadScript init/init-basic.vim
 
 " 插件加载
-LoadScript init/init-plugins.vim
+" LoadScript init/init-plugins.vim
 
 " 插件配置
-LoadScript plugin/vim-commentary.vim
-LoadScript plugin/coc-nvim.vim
-LoadScript plugin/coc-explorer.vim
+" LoadScript plugin/vim-commentary.vim
+" LoadScript plugin/coc-nvim.vim
+" LoadScript plugin/coc-explorer.vim
 
 " 界面样式
-LoadScript init/init-style.vim
+" LoadScript init/init-style.vim
 
 " 自定义按键
-LoadScript init/init-keymaps.vim
+" LoadScript init/init-keymaps.vim
+
+" set rtp-=~/.vim/plugged/coc.nvim

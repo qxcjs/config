@@ -9,10 +9,10 @@ let mapleader = "\<space>"
 " autocmd FileType vim setlocal commentstring="\ %s
 
 " 光标移出时解除高亮设置
-au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-au VimEnter,WinEnter,BufWinEnter * setlocal cursorcolumn
-au WinLeave * setlocal nocursorline
-au WinLeave * setlocal nocursorcolumn
+" au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+" au VimEnter,WinEnter,BufWinEnter * setlocal cursorcolumn
+" au WinLeave * setlocal nocursorline
+" au WinLeave * setlocal nocursorcolumn
 
 " 快速打开vim配置项目 config/vim-init
 noremap <expr> <leader>ov ':tabnew ' . g:vim_init_home . '/init.vim<CR>'

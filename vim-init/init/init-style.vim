@@ -5,8 +5,11 @@
 " 总是显示状态栏
 set laststatus=2
 
-" 总是显示行号
+" 总是显示行号 nu
 " set number
+
+" 总是显示相对行号 rnu
+set relativenumber
 
 " 总是显示侧边栏（用于显示 mark/gitdiff/诊断信息）
 " set signcolumn=yes
