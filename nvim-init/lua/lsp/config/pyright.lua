@@ -1,4 +1,8 @@
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#pyright
+local pyright_settings = {
+    settings = {python = {analysis = {typeCheckingMode = "off"}}}
+}
+
 local on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -19,22 +23,8 @@ local lsp_flags = {
     -- This is the default in Nvim 0.7+
     debounce_text_changes = 150
 }
-require('lspconfig')['pyright'].setup {on_attach = on_attach, flags = lsp_flags}
-
---[[ require'lspconfig'.pyright.setup {
-    settings = {
-        -- python stub config
-        -- https://github.com/LunarVim/LunarVim/issues/2565
-        python = {
-            pythonPath = "python3",
-            analysis = {
-                autoSearchPaths = true,
-                useLibraryCodeForTypes = true,
-                diagnosticMode = "workspace",
-                -- stubPath = "$HOME/Documents/typings"
-                -- stubPath = "/mnt/f/GitWorkspace/typeshed/stubs"
-                stubPath = ""
-            }
-        }
-    }
-} ]]
+require('lspconfig')['pyright'].setup {
+    settings = pyright_settings,
+    on_attach = on_attach,
+    flags = lsp_flags
+}

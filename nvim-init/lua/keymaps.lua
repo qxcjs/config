@@ -46,8 +46,8 @@ map("n", "bn", ":BufferLineCycleNext<CR>", opt)
 -- 关闭
 -- "moll/vim-bbye"
 map("n", "<C-w>", ":Bdelete!<CR>", opt)
-map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opt)
-map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", opt)
+map("n", "<leader>br", ":BufferLineCloseRight<CR>", opt)
+map("n", "<leader>bl", ":BufferLineCloseLeft<CR>", opt)
 map("n", "<leader>bc", ":BufferLinePickClose<CR>", opt)
 
 -- 插件快捷键
@@ -56,7 +56,7 @@ local pluginKeys = {}
 -- nvim-tree
 -- ======================================================================================= 
 -- 打开关闭tree
-map("n", "<leader>e", ":NvimTreeToggle<CR>", opt)
+map("n", "<leader>e", ":NvimTreeFindFileToggle<CR>", opt)
 
 -- 列表快捷键
 -- https://github.com/kyazdani42/nvim-tree.lua/blob/master/doc/nvim-tree-lua.txt
@@ -65,7 +65,7 @@ pluginKeys.nvimTreeList = {
     -- <CR>, o 都映射到 edit 动作上面
     -- edit 打开一个buffer, tabnew 打开一个tab
     {key = {"<CR>", "o", "<2-LeftMouse>"}, action = "edit"},
-    -- 分屏打开文件
+    {key = {"O"}, action = "tabnew"}, -- 分屏打开文件
     {key = "v", action = "vsplit"}, {key = "h", action = "split"},
     -- 显示隐藏文件
     {key = "i", action = "toggle_custom"}, -- 对应 filters 中的 custom (node_modules)
@@ -74,7 +74,8 @@ pluginKeys.nvimTreeList = {
     {key = "<F5>", action = "refresh"}, {key = "a", action = "create"},
     {key = "d", action = "remove"}, {key = "r", action = "rename"},
     {key = "x", action = "cut"}, {key = "c", action = "copy"},
-    {key = "p", action = "paste"}, {key = "s", action = "system_open"}
+    {key = "p", action = "paste"}, {key = "s", action = "system_open"},
+    {key = "W", action = "collapse_all"}, {key = "E", action = "expand_all"}
 }
 
 -- =======================================================================================

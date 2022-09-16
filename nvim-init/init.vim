@@ -39,4 +39,4 @@ lua require("lsp.cmp")
 lua require("lsp.null-ls")
 
 lua require("lsp.config.lua")
-lua require("lsp.config.python")
+lua require("lsp.config.pyright")
