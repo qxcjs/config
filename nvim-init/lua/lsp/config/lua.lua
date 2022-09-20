@@ -14,7 +14,7 @@ local opts = {
             },
             diagnostics = {
                 -- Get the language server to recognize the `vim` global
-                globals = { 'vim' }
+                globals = {'vim'}
             },
             workspace = {
                 -- Make the server aware of Neovim runtime files
@@ -22,10 +22,11 @@ local opts = {
                 checkThirdParty = false
             },
             -- Do not send telemetry data containing a randomized but unique identifier
-            telemetry = { enable = false }
+            telemetry = {enable = false}
         }
     },
-    flags = { debounce_text_changes = 150 },
+    flags = {debounce_text_changes = 150},
+    -- cmd = { sumneko_lua_binapp, '-E', sumneko_lua_binpath..'main.lua', '--locale=zh-cn' },
     on_attach = function(client, bufnr)
         -- 禁用格式化功能，交给专门插件插件处理
         client.resolved_capabilities.document_formatting = false
@@ -42,4 +43,4 @@ local opts = {
     end
 }
 
-require 'lspconfig'.sumneko_lua.setup(opts)
+require'lspconfig'.sumneko_lua.setup(opts)
