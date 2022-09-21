@@ -17,6 +17,11 @@ exec 'set rtp+='.g:nvim_init_home
 " 将 ~/.vim 目录加入 runtimepath (有时候 vim 不会自动帮你加入）
 " set rtp+=~/.vim
 
+" let g:python3_host_prog = expand(system('which -a python3 | head -n1 | echo'))
+" echo -n 不换行输出, 否则路径后面会有一个换行符导致路径无效
+let g:python3_host_prog = system('echo -n "$(which -a python3 | head -n1)"')
+" let g:python3_host_prog = '/home/liss/.pyenv/shims/python3'
+
 lua require('basic')
 
 lua require('style')
@@ -39,4 +44,6 @@ lua require("lsp.cmp")
 lua require("lsp.null-ls")
 
 lua require("lsp.config.lua")
-lua require("lsp.config.pyright")
+lua require("lsp.config.pylsp")
+" lua require("lsp.config.pyright")
+

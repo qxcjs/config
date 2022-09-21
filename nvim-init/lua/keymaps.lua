@@ -12,8 +12,8 @@ map("n", "<leader>ov", ":tabnew " .. vim.g.nvim_init_home .. "/init.vim<CR>",
     opt)
 
 -- 命令行下 Ctrl+j/k  上一个下一个
-map("c", "<C-j>", "<C-n>", {noremap = false})
-map("c", "<C-k>", "<C-p>", {noremap = false})
+-- map("c", "<C-j>", "<C-n>", {noremap = false})
+-- map("c", "<C-k>", "<C-p>", {noremap = false})
 
 -- 保存
 map("n", "<leader>w", ":w<CR>", opt)
@@ -27,14 +27,67 @@ map("n", "Q", ":qa!<CR>", opt)
 -- 在visual 模式里粘贴不要复制
 map("v", "p", '"_dP', opt)
 
--- 上下滚动浏览
+-- =======================================================================================
+-- 移动光标
+-- =======================================================================================
+-- 插入模式
+map("i", "<C-j>", "<up>", opt)
+map("i", "<C-k>", "<down>", opt)
+map("i", "<C-h>", "<left>", opt)
+map("i", "<C-l>", "<right>", opt)
+map("i", "<C-a>", "<home>", opt)
+map("i", "<C-e>", "<end>", opt)
+map("i", "<C-d>", "<del>", opt)
+
+-- 命令模式
+map("c", "<C-j>", "<up>", {noremap = false})
+map("c", "<C-k>", "<down>", {noremap = false})
+map("c", "<C-h>", "<left>", {noremap = false})
+map("c", "<C-l>", "<right>", {noremap = false})
+map("c", "<C-a>", "<home>", {noremap = false})
+map("c", "<C-e>", "<end>", {noremap = false})
+map("c", "<C-d>", "<del>", {noremap = false})
+
+-- 普通模式
 map("n", "<C-j>", "5j", opt)
 map("n", "<C-k>", "5k", opt)
-map("v", "<C-j>", "5j", opt)
-map("v", "<C-k>", "5k", opt)
 -- ctrl u / ctrl + d  只移动9行，默认移动半屏
 map("n", "<C-u>", "10k", opt)
 map("n", "<C-d>", "10j", opt)
+
+-- 可视模式
+map("v", "<C-j>", "5j", opt)
+map("v", "<C-k>", "5k", opt)
+
+-- =======================================================================================
+-- window 切换
+-- =======================================================================================
+-- 分屏 split the screens to up (horizontal), down (horizontal), left (vertical), right (vertical)
+map("n", "<leader>sj", ":set nosplitbelow<CR>:split<CR>:set splitbelow<CR>",
+    {noremap = true, silent = true, desc = "上下分屏, 光标在上"})
+map("n", "<leader>sk", ":set splitbelow<CR>:split<CR>",
+    {noremap = true, silent = true, desc = "上下分屏, 光标在下"})
+map("n", "<leader>sh", ":set nosplitright<CR>:vsplit<CR>:set splitright<CR>",
+    {noremap = true, silent = true, desc = "左右分屏, 光标在左"})
+map("n", "<leader>sl", ":set splitright<CR>:vsplit<CR>",
+    {noremap = true, silent = true, desc = "左右分屏, 光标在右"})
+
+-- 调整分屏结构
+map("n", "srh", "<C-w>b<C-w>K",
+    {noremap = true, silent = true, desc = "将所有分屏垂直放置"})
+map("n", "srv", "<C-w>b<C-w>H",
+    {noremap = true, silent = true, desc = "将所有分屏水平放置"})
+map("n", "<leader>sh", "<C-w>t<C-w>K",
+    {noremap = true, silent = true, desc = "上下分屏"})
+map("n", "<leader>sv", "<C-w>t<C-w>H",
+    {noremap = true, silent = true, desc = "水平分屏"})
+
+-- 光标在窗口之间移动
+map("n", "<leader>ww", "<C-w>w", opt)
+map("n", "<leader>wk", "<C-w>k", opt)
+map("n", "<leader>wj", "<C-w>j", opt)
+map("n", "<leader>wh", "<C-w>h", opt)
+map("n", "<leader>wl", "<C-w>l", opt)
 
 -- 左右Tab切换
 -- =======================================================================================
@@ -45,7 +98,7 @@ map("n", "bn", ":BufferLineCycleNext<CR>", opt)
 
 -- 关闭
 -- "moll/vim-bbye"
-map("n", "<C-w>", ":Bdelete!<CR>", opt)
+-- map("n", "<C-w>", ":Bdelete!<CR>", opt)
 map("n", "<leader>br", ":BufferLineCloseRight<CR>", opt)
 map("n", "<leader>bl", ":BufferLineCloseLeft<CR>", opt)
 map("n", "<leader>bc", ":BufferLinePickClose<CR>", opt)
