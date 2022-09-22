@@ -3,41 +3,43 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 local opt = {noremap = true, silent = true}
-
--- 本地变量
-local map = vim.api.nvim_set_keymap
+-- local map = vim.api.nvim_set_keymap
+local map = function(mode, lhs, rhs, opts)
+    local options = {noremap = true, silent = true}
+    if opts then options = vim.tbl_extend("force", options, opts) end
+    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+end
 
 -- 快速打开vim配置文件
-map("n", "<leader>ov", ":tabnew " .. vim.g.nvim_init_home .. "/init.vim<CR>",
-    opt)
+map("n", "<leader>ov", ":tabnew " .. vim.g.nvim_init_home .. "/init.vim<CR>")
 
 -- 命令行下 Ctrl+j/k  上一个下一个
 -- map("c", "<C-j>", "<C-n>", {noremap = false})
 -- map("c", "<C-k>", "<C-p>", {noremap = false})
 
 -- 保存
-map("n", "<leader>w", ":w<CR>", opt)
-map("n", "<leader>wq", ":wqa!<CR>", opt)
+map("n", "<leader>w", ":w<CR>")
+map("n", "<leader>wq", ":wqa!<CR>")
 
 -- 退出
-map("n", "q", ":q<CR>", opt)
-map("n", "qq", ":q!<CR>", opt)
-map("n", "Q", ":qa!<CR>", opt)
+map("n", "q", ":q<CR>")
+map("n", "qq", ":q!<CR>")
+map("n", "Q", ":qa!<CR>")
 
 -- 在visual 模式里粘贴不要复制
-map("v", "p", '"_dP', opt)
+map("v", "p", '"_dP')
 
 -- =======================================================================================
 -- 移动光标
 -- =======================================================================================
 -- 插入模式
-map("i", "<C-j>", "<up>", opt)
-map("i", "<C-k>", "<down>", opt)
-map("i", "<C-h>", "<left>", opt)
-map("i", "<C-l>", "<right>", opt)
-map("i", "<C-a>", "<home>", opt)
-map("i", "<C-e>", "<end>", opt)
-map("i", "<C-d>", "<del>", opt)
+map("i", "<C-j>", "<up>")
+map("i", "<C-k>", "<down>")
+map("i", "<C-h>", "<left>")
+map("i", "<C-l>", "<right>")
+map("i", "<C-a>", "<home>")
+map("i", "<C-e>", "<end>")
+map("i", "<C-d>", "<del>")
 
 -- 命令模式
 map("c", "<C-j>", "<up>", {noremap = false})
@@ -49,81 +51,84 @@ map("c", "<C-e>", "<end>", {noremap = false})
 map("c", "<C-d>", "<del>", {noremap = false})
 
 -- 普通模式
-map("n", "<C-j>", "5j", opt)
-map("n", "<C-k>", "5k", opt)
+map("n", "<C-j>", "5j")
+map("n", "<C-k>", "5k")
 -- ctrl u / ctrl + d  只移动9行，默认移动半屏
-map("n", "<C-u>", "10k", opt)
-map("n", "<C-d>", "10j", opt)
+map("n", "<C-u>", "10k")
+map("n", "<C-d>", "10j")
 
 -- 可视模式
-map("v", "<C-j>", "5j", opt)
-map("v", "<C-k>", "5k", opt)
+map("v", "<C-j>", "5j")
+map("v", "<C-k>", "5k")
 
 -- =======================================================================================
--- window 切换
+-- window 
 -- =======================================================================================
--- 分屏 split the screens to up (horizontal), down (horizontal), left (vertical), right (vertical)
+-- split the screens to up (horizontal), down (horizontal), left (vertical), right (vertical)
 map("n", "<leader>sj", ":set nosplitbelow<CR>:split<CR>:set splitbelow<CR>",
-    {noremap = true, silent = true, desc = "上下分屏, 光标在上"})
-map("n", "<leader>sk", ":set splitbelow<CR>:split<CR>",
-    {noremap = true, silent = true, desc = "上下分屏, 光标在下"})
+    {desc = ""})
+map("n", "<leader>sk", ":set splitbelow<CR>:split<CR>", {desc = ""})
 map("n", "<leader>sh", ":set nosplitright<CR>:vsplit<CR>:set splitright<CR>",
-    {noremap = true, silent = true, desc = "左右分屏, 光标在左"})
-map("n", "<leader>sl", ":set splitright<CR>:vsplit<CR>",
-    {noremap = true, silent = true, desc = "左右分屏, 光标在右"})
+    {desc = ""})
+map("n", "<leader>sl", ":set splitright<CR>:vsplit<CR>", {desc = ""})
 
--- 调整分屏结构
-map("n", "srh", "<C-w>b<C-w>K",
-    {noremap = true, silent = true, desc = "将所有分屏垂直放置"})
-map("n", "srv", "<C-w>b<C-w>H",
-    {noremap = true, silent = true, desc = "将所有分屏水平放置"})
-map("n", "<leader>sh", "<C-w>t<C-w>K",
-    {noremap = true, silent = true, desc = "上下分屏"})
-map("n", "<leader>sv", "<C-w>t<C-w>H",
-    {noremap = true, silent = true, desc = "水平分屏"})
+-- 
+map("n", "srh", "<C-w>b<C-w>K", {desc = ""})
+map("n", "srv", "<C-w>b<C-w>H", {desc = ""})
+map("n", "<leader>sh", "<C-w>t<C-w>K", {desc = ""})
+map("n", "<leader>sv", "<C-w>t<C-w>H", {desc = ""})
 
--- 光标在窗口之间移动
-map("n", "<leader>ww", "<C-w>w", opt)
-map("n", "<leader>wk", "<C-w>k", opt)
-map("n", "<leader>wj", "<C-w>j", opt)
-map("n", "<leader>wh", "<C-w>h", opt)
-map("n", "<leader>wl", "<C-w>l", opt)
+-- 
+map("n", "<C-A-n>", "<C-w>w",
+    {desc = "Move cursor to window below/right of the current one"})
+map("n", "<C-A-p>", "<C-w>W",
+    {desc = "Move cursor to window above/left of the current one"})
+map("n", "<A-j>", "<C-w>k", {desc = "Move cursor to below window"})
+map("n", "<A-k>", "<C-w>j", {desc = "Move cursor to above window"})
+map("n", "<A-h>", "<C-w>h")
+map("n", "<A-l>", "<C-w>l")
 
--- 左右Tab切换
+-- 
+map("n", "<leader>wq", "<C-w>c", {desc = ""})
+map("n", "<leader>wo", "<C-w>o", {desc = ""})
+map("n", "<leader>wa", "<C-w>o <bar> :q <CR>", {desc = ""})
+
+-- 
+map("n", "<C-up>", ":res +5", {desc = ""})
+map("n", "<C-down>", ":res -5", {desc = ""})
+map("n", "<C-left>", ":vertical resize-5", {desc = ""})
+map("n", "<C-right>", ":vertical resize+5", {desc = ""})
+
 -- =======================================================================================
--- bufferline
+-- buffer 
 -- =======================================================================================
-map("n", "bp", ":BufferLineCyclePrev<CR>", opt)
-map("n", "bn", ":BufferLineCycleNext<CR>", opt)
+-- bufferline plugin
+map("n", "bp", ":BufferLineCyclePrev<CR>")
+map("n", "bn", ":BufferLineCycleNext<CR>")
 
--- 关闭
 -- "moll/vim-bbye"
--- map("n", "<C-w>", ":Bdelete!<CR>", opt)
-map("n", "<leader>br", ":BufferLineCloseRight<CR>", opt)
-map("n", "<leader>bl", ":BufferLineCloseLeft<CR>", opt)
-map("n", "<leader>bc", ":BufferLinePickClose<CR>", opt)
+map("n", "<leader>bd", ":Bdelete!<CR>", {desc = "difference between :q and :bd"})
+map("n", "<leader>br", ":BufferLineCloseRight<CR>")
+map("n", "<leader>bl", ":BufferLineCloseLeft<CR>")
+map("n", "<leader>bc", ":BufferLinePickClose<CR>")
 
--- 插件快捷键
+-- 
 local pluginKeys = {}
 -- =======================================================================================
 -- nvim-tree
--- ======================================================================================= 
--- 打开关闭tree
-map("n", "<leader>e", ":NvimTreeFindFileToggle<CR>", opt)
+-- =======================================================================================
+-- 
+map("n", "<leader>e", ":NvimTreeFindFileToggle<CR>")
 
--- 列表快捷键
 -- https://github.com/kyazdani42/nvim-tree.lua/blob/master/doc/nvim-tree-lua.txt
 pluginKeys.nvimTreeList = {
     -- 打开文件或文件夹
     -- <CR>, o 都映射到 edit 动作上面
     -- edit 打开一个buffer, tabnew 打开一个tab
     {key = {"<CR>", "o", "<2-LeftMouse>"}, action = "edit"},
-    {key = {"O"}, action = "tabnew"}, -- 分屏打开文件
-    {key = "v", action = "vsplit"}, {key = "h", action = "split"},
-    -- 显示隐藏文件
-    {key = "i", action = "toggle_custom"}, -- 对应 filters 中的 custom (node_modules)
+    {key = {"O"}, action = "tabnew"}, {key = "v", action = "vsplit"},
+    {key = "h", action = "split"}, {key = "i", action = "toggle_custom"},
     {key = ".", action = "toggle_dotfiles"}, -- Hide (dotfiles)
-    -- 文件操作
     {key = "<F5>", action = "refresh"}, {key = "a", action = "create"},
     {key = "d", action = "remove"}, {key = "r", action = "rename"},
     {key = "x", action = "cut"}, {key = "c", action = "copy"},
@@ -132,12 +137,12 @@ pluginKeys.nvimTreeList = {
 }
 
 -- =======================================================================================
--- 格式化 
--- ======================================================================================= 
-map("n", "==", ":lua vim.lsp.buf.formatting_sync()<CR>", opt)
+-- formatting
+-- =======================================================================================
+map("n", "==", ":lua vim.lsp.buf.formatting_sync()<CR>")
 
 -- =======================================================================================
--- LSP 跳转, 文档
+-- LSP
 -- =======================================================================================
 pluginKeys.mapLSP = function(mapbuf)
     -- go xx
@@ -164,68 +169,53 @@ pluginKeys.mapLSP = function(mapbuf)
 end
 
 -- =======================================================================================
--- nvim-cmp 自动补全
+-- nvim-cmp
 -- =======================================================================================
 pluginKeys.cmp = function(cmp)
     return {
-        -- 出现补全
         ["<A-.>"] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}),
-        -- 取消
         ["<A-,>"] = cmp.mapping({
             i = cmp.mapping.abort(),
             c = cmp.mapping.close()
         }),
-        -- 上一个
         ["<C-k>"] = cmp.mapping.select_prev_item(),
-        -- 下一个
         ["<C-j>"] = cmp.mapping.select_next_item(),
-        -- 确认
         ["<CR>"] = cmp.mapping.confirm({
             select = true,
             behavior = cmp.ConfirmBehavior.Replace
         }),
         ['<Tab>'] = cmp.mapping.confirm({select = true}),
-        -- 如果窗口内容太多，可以滚动
+        -- 预览窗口上下滚动
         ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), {"i", "c"}),
         ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), {"i", "c"})
     }
 end
 
 -- =======================================================================================
--- comment 代码注释
+-- comment 
 -- =======================================================================================
 pluginKeys.comment = {
-    -- Normal 模式快捷键
-    toggler = {
-        line = "gcc", -- 行注释
-        block = "gbc" -- 块注释
-    },
-    -- Visual 模式
+    -- Normal
+    toggler = {line = "gcc", block = "gbc"},
     opleader = {line = "gc", bock = "gb"}
 }
 
 -- =======================================================================================
--- Telescope 
--- ======================================================================================= 
+-- Telescope
+-- =======================================================================================
 
--- 查找文件
-map("n", "<C-p>", ":Telescope find_files<CR>", opt)
--- 全局搜索
-map("n", "<C-f>", ":Telescope live_grep<CR>", opt)
+map("n", "<C-p>", ":Telescope find_files<CR>")
+map("n", "<C-f>", ":Telescope live_grep<CR>")
 
 pluginKeys.telescopeList = {
     i = {
-        -- 上下移动
         ["<C-j>"] = "move_selection_next",
         ["<C-k>"] = "move_selection_previous",
         ["<Down>"] = "move_selection_next",
         ["<Up>"] = "move_selection_previous",
-        -- 历史记录
         ["<C-n>"] = "cycle_history_next",
         ["<C-p>"] = "cycle_history_prev",
-        -- 关闭窗口
         ["<C-c>"] = "close",
-        -- 预览窗口上下滚动
         ["<C-u>"] = "preview_scrolling_up",
         ["<C-d>"] = "preview_scrolling_down"
     }

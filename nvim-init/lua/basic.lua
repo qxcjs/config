@@ -1,6 +1,7 @@
 -- utf8
 vim.g.encoding = "UTF-8"
-vim.o.fileencoding = 'utf-8'
+vim.o.fileencoding = "utf-8"
+vim.o.fileencodings = "ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1"
 -- jkhl 移动时光标周围保留8行
 vim.o.scrolloff = 8
 vim.o.sidescrolloff = 8
@@ -75,7 +76,7 @@ vim.o.shortmess = vim.o.shortmess .. 'c'
 -- 补全最多显示10行
 vim.o.pumheight = 10
 -- 永远显示 tabline
-vim.o.showtabline = 2
+vim.o.showtabline = 1
 -- 使用增强状态栏插件后不再需要 vim 的模式提示
 vim.o.showmode = false
 -- 剪切板

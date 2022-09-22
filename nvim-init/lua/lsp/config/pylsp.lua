@@ -1,7 +1,7 @@
 require'lspconfig'.pylsp.setup {
     settings = {
         pylsp = {
-            plugins = {pycodestyle = {ignore = {'W391'}, maxLineLength = 100}}
+            plugins = {pycodestyle = {ignore = {'W391'}, maxLineLength = 128}}
         }
     },
     on_attach = function(client, bufnr)
