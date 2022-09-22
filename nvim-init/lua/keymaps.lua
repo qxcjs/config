@@ -204,8 +204,10 @@ pluginKeys.comment = {
 -- Telescope
 -- =======================================================================================
 
-map("n", "<C-p>", ":Telescope find_files<CR>")
-map("n", "<C-f>", ":Telescope live_grep<CR>")
+map("n", "<leader>ff", ":Telescope find_files<CR>")
+map("n", "<leader>fg", ":Telescope live_grep<CR>")
+map("n", "<leader>fb", ":Telescope buffers<CR>")
+map("n", "<leader>fh", ":Telescope help_tags<CR>")
 
 pluginKeys.telescopeList = {
     i = {
