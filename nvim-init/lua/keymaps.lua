@@ -146,7 +146,7 @@ map("n", "==", ":lua vim.lsp.buf.formatting_sync()<CR>")
 -- =======================================================================================
 pluginKeys.mapLSP = function(mapbuf)
     -- go xx
-    mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)
+    mapbuf("n", "gd", ":vsplit | lua vim.lsp.buf.definition()<CR>", opt)
     mapbuf("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opt)
     mapbuf("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opt)
     mapbuf("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)

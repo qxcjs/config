@@ -47,5 +47,7 @@ lua require("lsp.null-ls")
 
 lua require("lsp.config.lua")
 lua require("lsp.config.pylsp")
+" lua require("lsp.config.java")
 " lua require("lsp.config.pyright")
 
+" autocmd BufRead,BufNewFile *.java lua require("lsp.config.java") 

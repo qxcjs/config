@@ -67,6 +67,7 @@ packer.startup({
             "jose-elias-alvarez/null-ls.nvim",
             requires = "nvim-lua/plenary.nvim"
         })
+        use "mfussenegger/nvim-jdtls"
         if install_plugins then require('packer').sync() end
     end,
     config = {
