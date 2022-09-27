@@ -50,6 +50,7 @@ packer.startup({
         use("ahmedkhalf/project.nvim")
         -- 代码高亮, 增量选择, 自动缩进等功能
         use({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"})
+        use "nvim-treesitter/nvim-treesitter-textobjects"
 
         -- LSP
         use({
@@ -57,11 +58,18 @@ packer.startup({
             "neovim/nvim-lspconfig"
         })
         use({
-            "hrsh7th/nvim-cmp", "hrsh7th/vim-vsnip", "hrsh7th/cmp-nvim-lsp", -- { name = nvim_lsp }
+            "hrsh7th/nvim-cmp", "hrsh7th/cmp-nvim-lsp-document-symbol",
+            "hrsh7th/vim-vsnip", "hrsh7th/cmp-nvim-lsp", -- { name = nvim_lsp }
             "hrsh7th/cmp-vsnip", "hrsh7th/cmp-buffer", -- { name = 'buffer' },
             "hrsh7th/cmp-path", -- { name = 'path' }
             "hrsh7th/cmp-cmdline" -- { name = 'cmdline' }
-
+        })
+        use({
+            'ray-x/navigator.lua',
+            requires = {
+                {'ray-x/guihua.lua', run = 'cd lua/fzy && make'},
+                {'neovim/nvim-lspconfig'}
+            }
         })
         use 'simrat39/symbols-outline.nvim'
         use({

@@ -45,10 +45,11 @@ lua require("plugin-config.mason-lspconfig")
 lua require("lsp.cmp")
 lua require("lsp.null-ls")
 lua require("lsp.symbols-outline")
+" lua require("lsp.navigator")
 
 lua require("lsp.config.lua")
-lua require("lsp.config.pylsp")
+" lua require("lsp.config.pylsp")
 " lua require("lsp.config.java")
-" lua require("lsp.config.pyright")
+lua require("lsp.config.pyright")
 
 " autocmd BufRead,BufNewFile *.java lua require("lsp.config.java") 

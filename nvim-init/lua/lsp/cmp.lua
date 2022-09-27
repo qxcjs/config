@@ -19,7 +19,8 @@ cmp.setup({
 -- / 查找模式使用 buffer 源
 cmp.setup.cmdline("/", {
     mapping = cmp.mapping.preset.cmdline(),
-    sources = {{name = "buffer"}}
+    sources = cmp.config.sources({{name = 'nvim_lsp_document_symbol'}},
+                                 {{name = 'buffer'}})
 })
 
 -- : 命令行模式中使用 path 和 cmdline 源.
