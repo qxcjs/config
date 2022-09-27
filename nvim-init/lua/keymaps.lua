@@ -103,8 +103,8 @@ map("n", "<C-right>", ":vertical resize+5", {desc = ""})
 -- buffer 
 -- =======================================================================================
 -- bufferline plugin
-map("n", "bp", ":BufferLineCyclePrev<CR>")
-map("n", "bn", ":BufferLineCycleNext<CR>")
+map("n", "<leader>bp", ":BufferLineCyclePrev<CR>")
+map("n", "<leader>bn", ":BufferLineCycleNext<CR>")
 
 -- "moll/vim-bbye"
 map("n", "<leader>bd", ":Bdelete!<CR>", {desc = "difference between :q and :bd"})
