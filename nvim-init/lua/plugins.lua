@@ -63,6 +63,7 @@ packer.startup({
             "hrsh7th/cmp-cmdline" -- { name = 'cmdline' }
 
         })
+        use 'simrat39/symbols-outline.nvim'
         use({
             "jose-elias-alvarez/null-ls.nvim",
             requires = "nvim-lua/plenary.nvim"
