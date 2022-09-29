@@ -51,19 +51,30 @@ packer.startup({
         -- 代码高亮, 增量选择, 自动缩进等功能
         use({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"})
         use "nvim-treesitter/nvim-treesitter-textobjects"
+        use 'nvim-treesitter/nvim-treesitter-context'
 
         -- LSP
         use({
             "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim",
             "neovim/nvim-lspconfig"
         })
-        use({
-            "hrsh7th/nvim-cmp", "hrsh7th/cmp-nvim-lsp-document-symbol",
-            "hrsh7th/vim-vsnip", "hrsh7th/cmp-nvim-lsp", -- { name = nvim_lsp }
-            "hrsh7th/cmp-vsnip", "hrsh7th/cmp-buffer", -- { name = 'buffer' },
-            "hrsh7th/cmp-path", -- { name = 'path' }
-            "hrsh7th/cmp-cmdline" -- { name = 'cmdline' }
-        })
+
+        -- nvim-cmp
+        use "hrsh7th/cmp-nvim-lsp"
+        use "hrsh7th/cmp-buffer"
+        use "hrsh7th/cmp-path"
+        use "hrsh7th/cmp-cmdline"
+        use "hrsh7th/cmp-nvim-lsp-document-symbol"
+        use "hrsh7th/cmp-nvim-lsp-signature-help"
+        use "hrsh7th/nvim-cmp"
+
+        -- vsnip
+        use "hrsh7th/cmp-vsnip"
+        use "hrsh7th/vim-vsnip"
+
+        -- lspkind
+        use {'onsails/lspkind-nvim'}
+
         use({
             'ray-x/navigator.lua',
             requires = {

@@ -4,6 +4,12 @@ if not status then
     return
 end
 
+local status, treesitter_context = pcall(require, "treesitter-context")
+if not status then
+    vim.notify("没有找到 treesitter-context")
+    return
+end
+
 treesitter.setup({
     -- 安装 language parser
     -- :TSInstallInfo 命令查看支持的语言
@@ -57,3 +63,4 @@ treesitter.setup({
 
     }
 })
+treesitter_context.setup()

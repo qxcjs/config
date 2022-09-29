@@ -9,21 +9,22 @@ cmp.setup({
         end
     },
     -- 补全源
-    sources = cmp.config.sources({{name = "nvim_lsp"}, {name = "vsnip"}},
-                                 {{name = "buffer"}, {name = "path"}}),
+    sources = cmp.config.sources({{name = "nvim_lsp"}}, {{name = "vsnip"}},
+                                 {{name = "buffer"}}, {{name = "path"}},
+                                 {{name = 'nvim_lsp_signature_help'}}),
 
     -- 快捷键设置
     mapping = require("keymaps").cmp(cmp)
 })
 
--- / 查找模式使用 buffer 源
+-- 命令模式下输入 "/" 启用补全
 cmp.setup.cmdline("/", {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({{name = 'nvim_lsp_document_symbol'}},
                                  {{name = 'buffer'}})
 })
 
--- : 命令行模式中使用 path 和 cmdline 源.
+-- : 命令模式中使用 path 和 cmdline 源.
 cmp.setup.cmdline(":", {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({{name = "path"}}, {{name = "cmdline"}})
