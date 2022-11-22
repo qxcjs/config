@@ -2,6 +2,14 @@
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
+table.insert(runtime_path, 'lua/vim/lsp/?/?.lua')
+table.insert(runtime_path, '/usr/share/nvim/runtime/lua/vim/')
+
+local log = require('vim.lsp.log')
+-- local a = vim.lsp.buf.definition
+
+local library_path = vim.api.nvim_get_runtime_file('', true)
+table.insert(library_path, '/usr/share/nvim/runtime/lua/vim')
 
 local opts = {
     settings = {
@@ -18,8 +26,9 @@ local opts = {
             },
             workspace = {
                 -- Make the server aware of Neovim runtime files
-                library = vim.api.nvim_get_runtime_file('', true),
-                checkThirdParty = false
+                -- library = vim.api.dfvim_get_runtime_file('', true),
+                library = library_path,
+                checkThirdParty = true
             },
             -- Do not send telemetry data containing a randomized but unique identifier
             telemetry = {enable = false}
@@ -28,9 +37,25 @@ local opts = {
     flags = {debounce_text_changes = 150},
     -- cmd = { sumneko_lua_binapp, '-E', sumneko_lua_binpath..'main.lua', '--locale=zh-cn' },
     on_attach = function(client, bufnr)
+        print(client.resolved_capabilities.document_formatting)
+        -- print(#client.resolved_capabilities)
         -- 禁用格式化功能，交给专门插件插件处理
         client.resolved_capabilities.document_formatting = false
         client.resolved_capabilities.document_range_formatting = false
+
+        -- print(type(bufnr))
+        -- 关于 table 中明明有内容但是长度为0的问题, https://developer.aliyun.com/article/11393
+        -- print(#client)
+        -- print(client.resolved_capabilities.document_formatting)
+        for index, data in pairs(library_path) do
+            log.info(index, ", ", data)
+            -- for key, value in pairs(data) do print('\t', key, value) end
+        end
+
+        -- for index, data in pairs(client) do
+        --     log.info(index, ", ", data)
+        --     -- for key, value in pairs(data) do print('\t', key, value) end
+        -- end
 
         local function buf_set_keymap(...)
             vim.api.nvim_buf_set_keymap(bufnr, ...)

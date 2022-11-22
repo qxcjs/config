@@ -3,6 +3,7 @@ local install_path = vim.fn.stdpath('data') ..
 -- print(install_path)
 local install_plugins = false
 
+-- 自动下载 packer
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
     print('Installing packer...')
     local packer_url = 'https://github.com/wbthomason/packer.nvim'
@@ -19,7 +20,8 @@ packer.startup({
         -- Packer 包管理器
         use 'wbthomason/packer.nvim'
         -- 主题
-        use {"ellisonleao/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
+        -- use {"ellisonleao/gruvbox.nvim"}
+        use 'navarasu/onedark.nvim'
         -- 左侧树
         use({
             "kyazdani42/nvim-tree.lua",

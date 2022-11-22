@@ -16,6 +16,7 @@ exec 'set rtp+='.g:nvim_init_home
 
 " 将 ~/.vim 目录加入 runtimepath (有时候 vim 不会自动帮你加入）
 " set rtp+=~/.vim
+" set rtp+=/usr/share/nvim/runtime/lua/vim/lsp/buf.lua
 
 " let g:python3_host_prog = expand(system('which -a python3 | head -n1 | echo'))
 " echo -n 不换行输出, 否则路径后面会有一个换行符导致路径无效
