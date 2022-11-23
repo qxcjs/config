@@ -4,4 +4,6 @@ if not status then
     return
 end
 
-symbols_outline.setup()
+local opts = {symbol_blacklist = {'Variable'}}
+
+symbols_outline.setup(opts)

@@ -166,6 +166,8 @@ pluginKeys.mapLSP = function(mapbuf)
     mapbuf("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
     -- rename
     mapbuf("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
+    mapbuf("n", "<leader>sp",
+           "<cmd>lua require'symbols-outline'.toggle_outline()<CR>", opt)
 end
 
 -- =======================================================================================
@@ -199,6 +201,19 @@ pluginKeys.comment = {
     toggler = {line = "gcc", block = "gbc"},
     opleader = {line = "gc", bock = "gb"}
 }
+--
+-- =======================================================================================
+-- Symbols-outline
+-- =======================================================================================
+pluginKeys.symbolsOutline = function(mapbuf)
+    -- go xx
+    mapbuf("n", "gd", ":vsplit | lua vim.lsp.buf.definition()<CR>", opt)
+    mapbuf("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opt)
+    mapbuf("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opt)
+    mapbuf("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
+    mapbuf("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opt)
+    mapbuf("n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
+end
 
 -- =======================================================================================
 -- Telescope
