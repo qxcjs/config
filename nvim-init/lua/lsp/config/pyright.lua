@@ -1,6 +1,19 @@
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#pyright
 local pyright_settings = {
-    settings = {python = {analysis = {typeCheckingMode = "off"}}}
+    settings = {
+        python = {
+            analysis = {
+                typeCheckingMode = "off",
+                diagnosticSeverityOverrides = {
+                    reportUnusedVariable = false,
+                    reportUndefinedVariable = true,
+                    reportUnusedExpression = false,
+                    reportMissingTypeStubs = false,
+                    reportMissingImports = true
+                }
+            }
+        }
+    }
 }
 
 local on_attach = function(client, bufnr)

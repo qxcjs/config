@@ -26,7 +26,7 @@ map("n", "q", ":q<CR>")
 map("n", "qq", ":q!<CR>")
 map("n", "Q", ":qa!<CR>")
 
--- 在visual 模式里粘贴不要复制
+-- 在visual 模式里粘贴后不要复制覆盖的内容
 map("v", "p", '"_dP')
 
 -- =======================================================================================
@@ -85,8 +85,8 @@ map("n", "<C-A-p>", "<C-w>W",
     {desc = "Move cursor to window above/left of the current one"})
 map("n", "<A-j>", "<C-w>k", {desc = "Move cursor to below window"})
 map("n", "<A-k>", "<C-w>j", {desc = "Move cursor to above window"})
-map("n", "<A-h>", "<C-w>h")
-map("n", "<A-l>", "<C-w>l")
+map("n", "<A-h>", "<C-w>h", {desc = "Move cursor to left window"})
+map("n", "<A-l>", "<C-w>l", {desc = "Move cursor to right window"})
 
 -- 
 map("n", "<leader>wq", "<C-w>c", {desc = ""})
