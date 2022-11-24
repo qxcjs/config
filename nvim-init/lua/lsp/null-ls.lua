@@ -12,7 +12,7 @@ null_ls.setup({
         -- Formatting
         formatting.shfmt, -- shfmt for shell
         formatting.lua_format, -- stylua for lua 
-        formatting.autopep8, -- autopep8 for python
+        null_ls.builtins.formatting.autopep8, -- autopep8 for python
         formatting.prettier.with({ -- 只比默认配置少了 markdown
             filetypes = {
                 "javascript", "javascriptreact", "typescript",
