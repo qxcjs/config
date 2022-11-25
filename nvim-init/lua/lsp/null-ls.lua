@@ -7,12 +7,14 @@ end
 local formatting = null_ls.builtins.formatting
 
 null_ls.setup({
-    debug = false,
+    debug = true,
+    log_level = "warn",
     sources = {
         -- Formatting
         formatting.shfmt, -- shfmt for shell
         formatting.lua_format, -- stylua for lua 
-        null_ls.builtins.formatting.autopep8, -- autopep8 for python
+        formatting.autopep8, -- autopep8 for python
+        formatting.taplo, -- taplo for toml
         formatting.prettier.with({ -- 只比默认配置少了 markdown
             filetypes = {
                 "javascript", "javascriptreact", "typescript",
