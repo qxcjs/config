@@ -61,20 +61,18 @@ packer.startup({
             "neovim/nvim-lspconfig"
         })
 
-        -- nvim-cmp
-        use "hrsh7th/cmp-nvim-lsp"
-        use "hrsh7th/cmp-buffer"
-        use "hrsh7th/cmp-path"
-        use "hrsh7th/cmp-cmdline"
-        use "hrsh7th/cmp-nvim-lsp-document-symbol"
-        use "hrsh7th/cmp-nvim-lsp-signature-help"
-        use "hrsh7th/nvim-cmp"
+        use "hrsh7th/nvim-cmp" -- 补全引擎
+        use "hrsh7th/vim-vsnip" -- Snippet 引擎
 
-        -- vsnip
         use "hrsh7th/cmp-vsnip"
-        use "hrsh7th/vim-vsnip"
+        use "hrsh7th/cmp-nvim-lsp" -- {name = nvim_lsp}
+        use "hrsh7th/cmp-buffer" -- {name = buffer}
+        use "hrsh7th/cmp-path" -- {name = path}
+        use "hrsh7th/cmp-cmdline" -- {name = cmdline}
+        use "hrsh7th/cmp-nvim-lsp-document-symbol"
+        use "hrsh7th/cmp-nvim-lsp-signature-help" -- { name = 'nvim_lsp_signature_help' }
 
-        -- lspkind
+        -- UI 增强
         use {'onsails/lspkind-nvim'}
 
         use({
