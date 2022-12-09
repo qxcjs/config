@@ -30,6 +30,8 @@ lua require('style')
 lua require('keymaps')
 
 lua require('plugins')
+lua require("plugin-config.which-key")
+lua require("plugin-config.toggleterm")
 lua require("plugin-config.nvim-autopairs")
 lua require("plugin-config.nvim-tree")
 lua require("plugin-config.comment")

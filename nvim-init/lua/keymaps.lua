@@ -1,3 +1,11 @@
+-- Modes
+--   normal_mode = "n",
+--   insert_mode = "i",
+--   visual_mode = "v",
+--   visual_block_mode = "x",
+--   term_mode = "t",
+--   command_mode = "c",
+--
 -- leader key 为空格键
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -135,6 +143,21 @@ pluginKeys.nvimTreeList = {
     {key = "p", action = "paste"}, {key = "s", action = "system_open"},
     {key = "W", action = "collapse_all"}, {key = "E", action = "expand_all"}
 }
+
+-- =======================================================================================
+-- Toggleterm
+-- =======================================================================================
+
+map("n", "<leader>tf", "<cmd>ToggleTerm direction=float<cr>",
+    {desc = "ToggleTerm float"})
+map("n", "<leader>th", "<cmd>ToggleTerm size=10 direction=horizontal<cr>",
+    {desc = "ToggleTerm horizontal split"})
+map("n", "<leader>tv", "<cmd>ToggleTerm size=10 direction=vertical<cr>",
+    {desc = "ToggleTerm vertical split"})
+map("n", "<leader>tt", "<cmd>ToggleTerm size=15 direction=horizontal<cr>",
+    {desc = "Toggle terminal"})
+map("t", "<leader>tt", "<cmd>ToggleTerm size=15 direction=horizontal<cr>",
+    {desc = "Toggle terminal"})
 
 -- =======================================================================================
 -- formatting

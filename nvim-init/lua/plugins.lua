@@ -22,6 +22,13 @@ packer.startup({
         -- 主题
         -- use {"ellisonleao/gruvbox.nvim"}
         use 'navarasu/onedark.nvim'
+
+        -- 快捷键提示
+        use "folke/which-key.nvim"
+
+        -- Terminal
+        use {"akinsho/toggleterm.nvim", tag = '*'}
+
         -- 左侧树
         use({
             "kyazdani42/nvim-tree.lua",
