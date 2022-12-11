@@ -158,11 +158,12 @@ map("n", "<leader>tt", "<cmd>ToggleTerm size=15 direction=horizontal<cr>",
     {desc = "Toggle terminal"})
 map("t", "<leader>tt", "<cmd>ToggleTerm size=15 direction=horizontal<cr>",
     {desc = "Toggle terminal"})
+map("t", "<Esc>", "<c-\\><c-n>", {desc = "to normal mode"})
 
 -- =======================================================================================
 -- formatting
 -- =======================================================================================
-map("n", "==", ":lua vim.lsp.buf.formatting_sync()<CR>")
+map("n", "==", ":lua vim.lsp.buf.formatting()<CR>")
 
 -- =======================================================================================
 -- LSP
