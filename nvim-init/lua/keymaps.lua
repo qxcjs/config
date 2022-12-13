@@ -71,7 +71,7 @@ map("v", "<C-j>", "5j")
 map("v", "<C-k>", "5k")
 
 -- =======================================================================================
--- window 
+-- window
 -- =======================================================================================
 -- split the screens to up (horizontal), down (horizontal), left (vertical), right (vertical)
 map("n", "<leader>sj", ":set nosplitbelow<CR>:split<CR>:set splitbelow<CR>",
@@ -83,13 +83,16 @@ map("n", "<leader>sh", ":set nosplitright<CR>:vsplit<CR>:set splitright<CR>",
 map("n", "<leader>sl", ":set splitright<CR>:vsplit<CR>",
     {desc = "split window right move cursor"})
 
--- 
-map("n", "srh", "<C-w>b<C-w>K", {desc = ""})
-map("n", "srv", "<C-w>b<C-w>H", {desc = ""})
-map("n", "<leader>sh", "<C-w>t<C-w>K", {desc = ""})
-map("n", "<leader>sv", "<C-w>t<C-w>H", {desc = ""})
+--
+map("n", "srh", "<C-w>b<C-w>K",
+    {desc = "go to bottom window then move to the very top"})
+map("n", "srv", "<C-w>b<C-w>H",
+    {desc = "go to bottom window then move to the far left"})
+map("n", "<leader>sh", "<C-w>t<C-w>K",
+    {desc = "go to top window then move to the very top"})
+map("n", "<leader>sv", "<C-w>t<C-w>H",
+    {desc = "go to top window then move to the very left"})
 
--- 
 map("n", "<C-A-n>", "<C-w>w",
     {desc = "Move cursor to window below/right of the current one"})
 map("n", "<C-A-p>", "<C-w>W",
@@ -99,19 +102,19 @@ map("n", "<A-k>", "<C-w>j", {desc = "Move cursor to above window"})
 map("n", "<A-h>", "<C-w>h", {desc = "Move cursor to left window"})
 map("n", "<A-l>", "<C-w>l", {desc = "Move cursor to right window"})
 
--- 
 map("n", "<leader>wq", "<C-w>c", {desc = "close current window"})
 map("n", "<leader>wo", "<C-w>o", {desc = "keep current window, close others"})
 map("n", "<leader>wa", "<C-w>o <bar> :q <CR>", {desc = "close all window"})
 
--- 
-map("n", "<C-up>", ":res +5", {desc = "up res +5"})
-map("n", "<C-down>", ":res -5", {desc = "down res -5"})
-map("n", "<C-left>", ":vertical resize-5", {desc = "vertical resize-5"})
-map("n", "<C-right>", ":vertical resize+5", {desc = "vertical resize+5"})
+map("n", "<leader><Up>", ":res +5<CR>", {desc = "up res +5"})
+map("n", "<leader><Down>", ":res -5<CR>", {desc = "down res -5"})
+map("n", "<leader><Left>", ":vertical resize-5<CR>",
+    {desc = "vertical resize-5"})
+map("n", "<leader><Right>", ":vertical resize+5<CR>",
+    {desc = "vertical resize+5"})
 
 -- =======================================================================================
--- buffer 
+-- buffer
 -- =======================================================================================
 -- bufferline plugin
 map("n", "<leader>bp", ":BufferLineCyclePrev<CR>")
@@ -123,12 +126,11 @@ map("n", "<leader>br", ":BufferLineCloseRight<CR>")
 map("n", "<leader>bl", ":BufferLineCloseLeft<CR>")
 map("n", "<leader>bc", ":BufferLinePickClose<CR>")
 
--- 
+--
 local pluginKeys = {}
 -- =======================================================================================
 -- nvim-tree
 -- =======================================================================================
--- 
 map("n", "<leader>e", ":NvimTreeFindFileToggle<CR>",
     {desc = "NvimTreeFindFileToggle"})
 
@@ -149,20 +151,20 @@ pluginKeys.nvimTreeList = {
 }
 
 -- =======================================================================================
--- Toggleterm
+-- Toggleterm Terminal
 -- =======================================================================================
 
 map("n", "<leader>tf", "<cmd>ToggleTerm direction=float<cr>",
-    {desc = "ToggleTerm float"})
+    {desc = "Terminal float"})
 map("n", "<leader>th", "<cmd>ToggleTerm size=10 direction=horizontal<cr>",
-    {desc = "ToggleTerm horizontal split"})
+    {desc = "Terminal horizontal split on bottom"})
 map("n", "<leader>tv", "<cmd>ToggleTerm size=10 direction=vertical<cr>",
-    {desc = "ToggleTerm vertical split"})
+    {desc = "Terminal vertical split on left"})
 map("n", "<leader>tt", "<cmd>ToggleTerm size=15 direction=horizontal<cr>",
-    {desc = "Toggle terminal"})
+    {desc = "Toggle terminal on normal mode"})
 map("t", "<leader>tt", "<cmd>ToggleTerm size=15 direction=horizontal<cr>",
-    {desc = "Toggle terminal"})
-map("t", "<Esc>", "<c-\\><c-n>", {desc = "to normal mode"})
+    {desc = "Toggle terminal on terminal mode"})
+map("t", "<Esc>", "<c-\\><c-n>", {desc = "change to normal mode in terminal"})
 
 -- =======================================================================================
 -- formatting
@@ -222,7 +224,7 @@ pluginKeys.cmp = function(cmp)
 end
 
 -- =======================================================================================
--- comment 
+-- comment
 -- =======================================================================================
 pluginKeys.comment = {
     -- Normal
@@ -247,11 +249,16 @@ end
 -- Telescope
 -- =======================================================================================
 
-map("n", "<leader>ff", ":Telescope find_files<CR>")
-map("n", "<leader>fg", ":Telescope live_grep<CR>")
-map("n", "<leader>fb", ":Telescope buffers<CR>")
-map("n", "<leader>fh", ":Telescope help_tags<CR>")
-map("n", "<leader>fe", ":Telescope oldfiles<CR> <ESC>")
+map("n", "<leader>ff", ":Telescope find_files<CR>",
+    {desc = "Telescope find_files"})
+map("n", "<leader>fe", ":Telescope oldfiles<CR> <ESC>",
+    {desc = "Telescope oldfiles"})
+map("n", "<leader>fb", ":Telescope buffers<CR> <ESC>",
+    {desc = "Telescope buffers"})
+map("n", "<leader>fg", ":Telescope live_grep<CR>",
+    {desc = "Telescope live_grep"})
+map("n", "<leader>fh", ":Telescope help_tags<CR>",
+    {desc = "Telescope help_tags"})
 
 pluginKeys.telescopeList = {
     i = {

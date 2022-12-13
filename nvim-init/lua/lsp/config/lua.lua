@@ -40,10 +40,10 @@ local opts = {
         print(client.resolved_capabilities.document_formatting)
         -- print(#client.resolved_capabilities)
         -- 禁用格式化功能，交给专门插件插件处理
-        -- client.resolved_capabilities.document_formatting = false
-        -- client.resolved_capabilities.document_range_formatting = false
-        client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentRangeFormattingProvider = false
+        client.resolved_capabilities.document_formatting = false
+        client.resolved_capabilities.document_range_formatting = false
+        -- client.server_capabilities.documentFormattingProvider = false
+        -- client.server_capabilities.documentRangeFormattingProvider = false
 
         -- print(type(bufnr))
         -- 关于 table 中明明有内容但是长度为0的问题, https://developer.aliyun.com/article/11393
