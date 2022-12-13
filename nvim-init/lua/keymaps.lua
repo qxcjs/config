@@ -19,20 +19,21 @@ local map = function(mode, lhs, rhs, opts)
 end
 
 -- 快速打开vim配置文件
-map("n", "<leader>ov", ":tabnew " .. vim.g.nvim_init_home .. "/init.vim<CR>")
+map("n", "<leader>ov", ":tabnew " .. vim.g.nvim_init_home .. "/init.vim<CR>",
+    {desc = "quick open vim config"})
 
 -- 命令行下 Ctrl+j/k  上一个下一个
 -- map("c", "<C-j>", "<C-n>", {noremap = false})
 -- map("c", "<C-k>", "<C-p>", {noremap = false})
 
 -- 保存
-map("n", "<leader>w", ":w<CR>")
-map("n", "<leader>wq", ":wqa!<CR>")
+map("n", "<leader>w", ":w<CR>", {desc = "Save"})
+map("n", "<leader>wq", ":wqa!<CR>", {desc = "Save and Quit"})
 
 -- 退出
-map("n", "q", ":q<CR>")
-map("n", "qq", ":q!<CR>")
-map("n", "Q", ":qa!<CR>")
+map("n", "<leader>qc", ":q<CR>", {desc = "Quit"})
+map("n", "<leader>qq", ":q!<CR>", {desc = "Quit not save"})
+map("n", "<leader>qa", ":qa!<CR>", {desc = "Quit not save all"})
 
 -- 在visual 模式里粘贴后不要复制覆盖的内容
 map("v", "p", '"_dP')
@@ -74,11 +75,13 @@ map("v", "<C-k>", "5k")
 -- =======================================================================================
 -- split the screens to up (horizontal), down (horizontal), left (vertical), right (vertical)
 map("n", "<leader>sj", ":set nosplitbelow<CR>:split<CR>:set splitbelow<CR>",
-    {desc = ""})
-map("n", "<leader>sk", ":set splitbelow<CR>:split<CR>", {desc = ""})
+    {desc = "split window below keep cursor"})
+map("n", "<leader>sk", ":set splitbelow<CR>:split<CR>",
+    {desc = "split window below move cursor"})
 map("n", "<leader>sh", ":set nosplitright<CR>:vsplit<CR>:set splitright<CR>",
-    {desc = ""})
-map("n", "<leader>sl", ":set splitright<CR>:vsplit<CR>", {desc = ""})
+    {desc = "split window right keep cursor"})
+map("n", "<leader>sl", ":set splitright<CR>:vsplit<CR>",
+    {desc = "split window right move cursor"})
 
 -- 
 map("n", "srh", "<C-w>b<C-w>K", {desc = ""})
@@ -97,15 +100,15 @@ map("n", "<A-h>", "<C-w>h", {desc = "Move cursor to left window"})
 map("n", "<A-l>", "<C-w>l", {desc = "Move cursor to right window"})
 
 -- 
-map("n", "<leader>wq", "<C-w>c", {desc = ""})
-map("n", "<leader>wo", "<C-w>o", {desc = ""})
-map("n", "<leader>wa", "<C-w>o <bar> :q <CR>", {desc = ""})
+map("n", "<leader>wq", "<C-w>c", {desc = "close current window"})
+map("n", "<leader>wo", "<C-w>o", {desc = "keep current window, close others"})
+map("n", "<leader>wa", "<C-w>o <bar> :q <CR>", {desc = "close all window"})
 
 -- 
-map("n", "<C-up>", ":res +5", {desc = ""})
-map("n", "<C-down>", ":res -5", {desc = ""})
-map("n", "<C-left>", ":vertical resize-5", {desc = ""})
-map("n", "<C-right>", ":vertical resize+5", {desc = ""})
+map("n", "<C-up>", ":res +5", {desc = "up res +5"})
+map("n", "<C-down>", ":res -5", {desc = "down res -5"})
+map("n", "<C-left>", ":vertical resize-5", {desc = "vertical resize-5"})
+map("n", "<C-right>", ":vertical resize+5", {desc = "vertical resize+5"})
 
 -- =======================================================================================
 -- buffer 
@@ -126,7 +129,8 @@ local pluginKeys = {}
 -- nvim-tree
 -- =======================================================================================
 -- 
-map("n", "<leader>e", ":NvimTreeFindFileToggle<CR>")
+map("n", "<leader>e", ":NvimTreeFindFileToggle<CR>",
+    {desc = "NvimTreeFindFileToggle"})
 
 -- https://github.com/kyazdani42/nvim-tree.lua/blob/master/doc/nvim-tree-lua.txt
 pluginKeys.nvimTreeList = {
@@ -163,7 +167,7 @@ map("t", "<Esc>", "<c-\\><c-n>", {desc = "to normal mode"})
 -- =======================================================================================
 -- formatting
 -- =======================================================================================
-map("n", "==", ":lua vim.lsp.buf.formatting()<CR>")
+map("n", "==", ":lua vim.lsp.buf.formatting()<CR>", {desc = "formatting"})
 
 -- =======================================================================================
 -- LSP
