@@ -1,3 +1,9 @@
+local status, lspconfig = pcall(require, "lspconfig")
+if not status then
+    vim.notify("没有找到 lspconfig")
+    return
+end
+
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#sumneko_lua
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/?.lua')
@@ -70,4 +76,4 @@ local opts = {
     end
 }
 
-require'lspconfig'.sumneko_lua.setup(opts)
+lspconfig.sumneko_lua.setup(opts)

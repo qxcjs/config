@@ -1,5 +1,5 @@
-local status, telescope = pcall(require, "telescope")
-if not status then
+local ok, telescope = pcall(require, "telescope")
+if not ok then
     vim.notify("没有找到 telescope")
     return
 end
@@ -15,7 +15,7 @@ telescope.setup({
         -- 内置 pickers 配置
         find_files = {
             -- 查找文件换皮肤，支持的参数有： dropdown, cursor, ivy
-            -- theme = "dropdown", 
+            -- theme = "dropdown",
         }
     },
     extensions = {

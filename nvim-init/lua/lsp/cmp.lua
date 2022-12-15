@@ -1,4 +1,8 @@
-local cmp = require("cmp")
+local status, cmp = pcall(require, "cmp")
+if not status then
+    vim.notify("没有找到 cmp")
+    return
+end
 
 cmp.setup({
     -- 指定 snippet 引擎
@@ -9,9 +13,9 @@ cmp.setup({
         end
     },
     -- 补全源
-    sources = cmp.config.sources({{name = "nvim_lsp"}}, {{name = "vsnip"}},
-                                 {{name = "buffer"}}, {{name = "path"}},
-                                 {{name = 'nvim_lsp_signature_help'}}),
+    sources = cmp.config.sources({ { name = "nvim_lsp" } }, { { name = "vsnip" } },
+        { { name = "buffer" } }, { { name = "path" } },
+        { { name = 'nvim_lsp_signature_help' } }),
 
     -- 快捷键设置
     mapping = require("keymaps").cmp(cmp)
@@ -20,12 +24,12 @@ cmp.setup({
 -- 命令模式下输入 "/" 启用补全
 cmp.setup.cmdline("/", {
     mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({{name = 'nvim_lsp_document_symbol'}},
-                                 {{name = 'buffer'}})
+    sources = cmp.config.sources({ { name = 'nvim_lsp_document_symbol' } },
+        { { name = 'buffer' } })
 })
 
 -- : 命令模式中使用 path 和 cmdline 源.
 cmp.setup.cmdline(":", {
     mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({{name = "path"}}, {{name = "cmdline"}})
+    sources = cmp.config.sources({ { name = "path" } }, { { name = "cmdline" } })
 })

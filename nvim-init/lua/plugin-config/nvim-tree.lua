@@ -1,5 +1,5 @@
-local status, nvim_tree = pcall(require, "nvim-tree")
-if not status then
+local ok, nvim_tree = pcall(require, "nvim-tree")
+if not ok then
     vim.notify("没有找到 nvim-tree")
     return
 end
@@ -8,15 +8,15 @@ end
 local list_keys = require('keymaps').nvimTreeList
 nvim_tree.setup({
     -- 不显示 git 状态图标
-    git = {enable = false},
+    git = { enable = false },
     -- project plugin 需要这样设置
     update_cwd = true,
-    update_focused_file = {enable = true, update_cwd = true},
+    update_focused_file = { enable = true, update_cwd = true },
     -- 隐藏 .文件 和 node_modules 文件夹
     filters = {
         dotfiles = true,
-        custom = {'node_modules', "**/logs", "**/__pycache__", "__pypackages__"},
-        exclude = {".gitignore"}
+        custom = { 'node_modules', "**/logs", "**/__pycache__", "__pypackages__" },
+        exclude = { ".gitignore" }
     },
     view = {
         -- 宽度
@@ -26,7 +26,7 @@ nvim_tree.setup({
         -- 隐藏根目录
         hide_root_folder = false,
         -- 自定义列表中快捷键
-        mappings = {custom_only = false, list = list_keys},
+        mappings = { custom_only = false, list = list_keys },
         -- 不显示行数
         number = false,
         relativenumber = false,

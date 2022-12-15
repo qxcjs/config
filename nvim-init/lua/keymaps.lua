@@ -26,14 +26,13 @@ map("n", "<leader>ov", ":tabnew " .. vim.g.nvim_init_home .. "/init.vim<CR>",
 -- map("c", "<C-j>", "<C-n>", {noremap = false})
 -- map("c", "<C-k>", "<C-p>", {noremap = false})
 
--- 保存
-map("n", "<leader>w", ":w<CR>", {desc = "Save"})
-map("n", "<leader>wq", ":wqa!<CR>", {desc = "Save and Quit"})
-
--- 退出
-map("n", "<leader>qc", ":q<CR>", {desc = "Quit"})
-map("n", "<leader>qq", ":q!<CR>", {desc = "Quit not save"})
-map("n", "<leader>qa", ":qa!<CR>", {desc = "Quit not save all"})
+-- 保存退出
+map("n", "<leader>w", "<cmd>w<CR>", {desc = "Save"})
+map("n", "<leader>q", ":q<CR>", {desc = "Quit"})
+map("n", "<C-q>", ":q!<CR>", {desc = "Force Quit"})
+map("n", "<C-s>", ":w!<CR>", {desc = "Force Save"})
+map("n", "<leader>wa", ":wqa!<CR>", {desc = "Force Save All"})
+map("n", "<leader>qa", ":qa!<CR>", {desc = "Force Quit All"})
 
 -- 在visual 模式里粘贴后不要复制覆盖的内容
 map("v", "p", '"_dP')
@@ -117,14 +116,23 @@ map("n", "<leader><Right>", ":vertical resize+5<CR>",
 -- buffer
 -- =======================================================================================
 -- bufferline plugin
-map("n", "<leader>bp", ":BufferLineCyclePrev<CR>")
-map("n", "<leader>bn", ":BufferLineCycleNext<CR>")
+map("n", "<S-n>", ":BufferLineCycleNext<CR>", {desc="Next buffer tab"})
+map("n", "<S-p>", ":BufferLineCyclePrev<CR>", {desc="Previous buffer tab"})
+map("n", "<leader>bn", ":BufferLineCycleNext<CR>", {desc="Next buffer tab"})
+map("n", "<leader>bp", ":BufferLineCyclePrev<CR>", {desc="Previous buffer tab"})
+map("n", ">b", ":BufferLineMoveNext<CR>", {desc="Move buffer tab right"})
+map("n", "<b", ":BufferLineMovePrev<CR>", {desc="Move buffer tab left"})
 
 -- "moll/vim-bbye"
 map("n", "<leader>bd", ":Bdelete!<CR>", {desc = "difference between :q and :bd"})
 map("n", "<leader>br", ":BufferLineCloseRight<CR>")
 map("n", "<leader>bl", ":BufferLineCloseLeft<CR>")
 map("n", "<leader>bc", ":BufferLinePickClose<CR>")
+
+-- =======================================================================================
+-- lspconfig
+-- =======================================================================================
+map("n", "<leader>li", "<cmd>LspInfo<cr>", {desc = "LSP information"})
 
 --
 local pluginKeys = {}

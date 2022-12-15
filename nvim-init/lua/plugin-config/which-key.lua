@@ -1,6 +1,6 @@
 -- https://zhuanlan.zhihu.com/p/555470098
-local status, which_key = pcall(require, "which-key")
-if not status then
+local ok, which_key = pcall(require, "which-key")
+if not ok then
     vim.notify("没有找到 which_key")
     return
 end
@@ -31,7 +31,7 @@ local mappings = {
     --     D = {"<Cmd>%bd|e#|bd#<Cr>", "Delete all buffers"}
     -- },
 
-    k = {name = "Find", e = {"<cmd>NvimTreeToggle<cr>", "Explorer"}}
+    k = { name = "Find", e = { "<cmd>NvimTreeToggle<cr>", "Explorer" } }
 
     -- z = {
     --     name = "Packer",

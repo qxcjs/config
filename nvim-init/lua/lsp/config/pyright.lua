@@ -1,3 +1,9 @@
+local status, lspconfig = pcall(require, "lspconfig")
+if not status then
+    vim.notify("没有找到 lspconfig")
+    return
+end
+
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#pyright
 local pyright_settings = {
     settings = {
@@ -44,7 +50,7 @@ local root_files = {
     'pyrightconfig.json'
 }
 
-require('lspconfig')['pyright'].setup {
+lspconfig['pyright'].setup {
     -- cmd = {'pyright'},
     settings = pyright_settings,
     on_attach = on_attach,
