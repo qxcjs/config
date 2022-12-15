@@ -79,8 +79,8 @@ vim.o.pumheight = 10
 vim.o.showtabline = 1
 -- 使用增强状态栏插件后不再需要 vim 的模式提示
 vim.o.showmode = false
--- 剪切板
--- vim.opt.clipboard = vim.opt.clipboard + 'unnamedplus'
+-- 剪切板 https://github.com/neovim/neovim/wiki/FAQ#how-to-use-the-windows-clipboard-from-wsl
+vim.opt.clipboard = 'unnamedplus'
 -- 开启鼠标功能
 vim.o.mouse = a
 

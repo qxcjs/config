@@ -1,3 +1,7 @@
+--[[
+    python format failed, [LSP] Format request failed, no matching language servers.
+    Not every LSP supports formating and, if you want to use any linter or formatter through the LSP interface you need something like null-ls
+--]] --
 local status, lspconfig = pcall(require, "lspconfig")
 if not status then
     vim.notify("没有找到 lspconfig")

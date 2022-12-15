@@ -27,7 +27,7 @@ packer.startup({
         use "folke/which-key.nvim"
 
         -- -- Terminal
-        use {"akinsho/toggleterm.nvim", tag = '*'}
+        use { "akinsho/toggleterm.nvim", tag = '*' }
         --
         -- -- 左侧树
         use({
@@ -35,37 +35,40 @@ packer.startup({
             requires = "kyazdani42/nvim-web-devicons"
         })
         -- tab 展示
-        -- use({
-        --     "akinsho/bufferline.nvim",
-        --     requires = {"kyazdani42/nvim-web-devicons", "moll/vim-bbye"}
-        -- })
+        use({
+            "akinsho/bufferline.nvim",
+            requires = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" }
+        })
         -- status 状态栏展示
         use({
             "nvim-lualine/lualine.nvim",
-            requires = {"kyazdani42/nvim-web-devicons"}
+            requires = { "kyazdani42/nvim-web-devicons" }
         })
         -- 括号补全 depend nvim-cmp
         -- use({"windwp/nvim-autopairs"})
         -- 注释
-        use {'numToStr/Comment.nvim'}
+        use { 'numToStr/Comment.nvim' }
         use("arkav/lualine-lsp-progress")
-        -- 快速搜索
+
+        -- quick search
         use {
             'nvim-telescope/telescope.nvim',
-            requires = {"nvim-lua/plenary.nvim"}
+            requires = { "nvim-lua/plenary.nvim" }
         }
+
         -- dashboard
         use("glepnir/dashboard-nvim")
         use("ahmedkhalf/project.nvim")
+
         -- 代码高亮, 增量选择, 自动缩进等功能
-        use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" , requires = {{"nvim-treesitter/nvim-treesitter-textobjects"},{"nvim-treesitter/nvim-treesitter-context"}}})
-        -- use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
-        --
+        use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate",
+            requires = { { "nvim-treesitter/nvim-treesitter-textobjects" }, { "nvim-treesitter/nvim-treesitter-context" } } })
+
         -- -- LSP
-        -- use({
-        --     "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim",
-        --     "neovim/nvim-lspconfig"
-        -- })
+        use({
+            "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim",
+            "neovim/nvim-lspconfig"
+        })
         --
         -- use "hrsh7th/nvim-cmp" -- 补全引擎
         -- use "hrsh7th/vim-vsnip" -- Snippet 引擎
@@ -78,7 +81,7 @@ packer.startup({
         -- use "hrsh7th/cmp-nvim-lsp-document-symbol"
         -- use "hrsh7th/cmp-nvim-lsp-signature-help" -- { name = 'nvim_lsp_signature_help' }
         --
-        -- -- UI 增强
+        -- -- LSP Icons
         -- use {'onsails/lspkind-nvim'}
         --
         -- use({

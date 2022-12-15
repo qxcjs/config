@@ -10,29 +10,29 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-local opt = {noremap = true, silent = true}
+local opt = { noremap = true, silent = true }
 -- local map = vim.api.nvim_set_keymap
 local map = function(mode, lhs, rhs, opts)
-    local options = {noremap = true, silent = true}
+    local options = { noremap = true, silent = true }
     if opts then options = vim.tbl_extend("force", options, opts) end
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
 -- 快速打开vim配置文件
 map("n", "<leader>ov", ":tabnew " .. vim.g.nvim_init_home .. "/init.vim<CR>",
-    {desc = "quick open vim config"})
+    { desc = "quick open vim config" })
 
 -- 命令行下 Ctrl+j/k  上一个下一个
 -- map("c", "<C-j>", "<C-n>", {noremap = false})
 -- map("c", "<C-k>", "<C-p>", {noremap = false})
 
 -- 保存退出
-map("n", "<leader>w", "<cmd>w<CR>", {desc = "Save"})
-map("n", "<leader>q", ":q<CR>", {desc = "Quit"})
-map("n", "<C-q>", ":q!<CR>", {desc = "Force Quit"})
-map("n", "<C-s>", ":w!<CR>", {desc = "Force Save"})
-map("n", "<leader>wa", ":wqa!<CR>", {desc = "Force Save All"})
-map("n", "<leader>qa", ":qa!<CR>", {desc = "Force Quit All"})
+map("n", "<leader>w", "<cmd>w<CR>", { desc = "Save" })
+map("n", "<leader>q", ":q<CR>", { desc = "Quit" })
+map("n", "<C-q>", ":q!<CR>", { desc = "Force Quit" })
+map("n", "<C-s>", ":w!<CR>", { desc = "Force Save" })
+map("n", "<leader>wa", ":wqa!<CR>", { desc = "Force Save All" })
+map("n", "<leader>qa", ":qa!<CR>", { desc = "Force Quit All" })
 
 -- 在visual 模式里粘贴后不要复制覆盖的内容
 map("v", "p", '"_dP')
@@ -50,13 +50,13 @@ map("i", "<C-e>", "<end>")
 map("i", "<C-d>", "<del>")
 
 -- 命令模式
-map("c", "<C-j>", "<up>", {noremap = false})
-map("c", "<C-k>", "<down>", {noremap = false})
-map("c", "<C-h>", "<left>", {noremap = false})
-map("c", "<C-l>", "<right>", {noremap = false})
-map("c", "<C-a>", "<home>", {noremap = false})
-map("c", "<C-e>", "<end>", {noremap = false})
-map("c", "<C-d>", "<del>", {noremap = false})
+map("c", "<C-j>", "<up>", { noremap = false })
+map("c", "<C-k>", "<down>", { noremap = false })
+map("c", "<C-h>", "<left>", { noremap = false })
+map("c", "<C-l>", "<right>", { noremap = false })
+map("c", "<C-a>", "<home>", { noremap = false })
+map("c", "<C-e>", "<end>", { noremap = false })
+map("c", "<C-d>", "<del>", { noremap = false })
 
 -- 普通模式
 map("n", "<C-j>", "5j")
@@ -74,57 +74,57 @@ map("v", "<C-k>", "5k")
 -- =======================================================================================
 -- split the screens to up (horizontal), down (horizontal), left (vertical), right (vertical)
 map("n", "<leader>sj", ":set nosplitbelow<CR>:split<CR>:set splitbelow<CR>",
-    {desc = "split window below keep cursor"})
+    { desc = "split window below keep cursor" })
 map("n", "<leader>sk", ":set splitbelow<CR>:split<CR>",
-    {desc = "split window below move cursor"})
+    { desc = "split window below move cursor" })
 map("n", "<leader>sh", ":set nosplitright<CR>:vsplit<CR>:set splitright<CR>",
-    {desc = "split window right keep cursor"})
+    { desc = "split window right keep cursor" })
 map("n", "<leader>sl", ":set splitright<CR>:vsplit<CR>",
-    {desc = "split window right move cursor"})
+    { desc = "split window right move cursor" })
 
 --
 map("n", "srh", "<C-w>b<C-w>K",
-    {desc = "go to bottom window then move to the very top"})
+    { desc = "go to bottom window then move to the very top" })
 map("n", "srv", "<C-w>b<C-w>H",
-    {desc = "go to bottom window then move to the far left"})
+    { desc = "go to bottom window then move to the far left" })
 map("n", "<leader>sh", "<C-w>t<C-w>K",
-    {desc = "go to top window then move to the very top"})
+    { desc = "go to top window then move to the very top" })
 map("n", "<leader>sv", "<C-w>t<C-w>H",
-    {desc = "go to top window then move to the very left"})
+    { desc = "go to top window then move to the very left" })
 
 map("n", "<C-A-n>", "<C-w>w",
-    {desc = "Move cursor to window below/right of the current one"})
+    { desc = "Move cursor to window below/right of the current one" })
 map("n", "<C-A-p>", "<C-w>W",
-    {desc = "Move cursor to window above/left of the current one"})
-map("n", "<A-j>", "<C-w>k", {desc = "Move cursor to below window"})
-map("n", "<A-k>", "<C-w>j", {desc = "Move cursor to above window"})
-map("n", "<A-h>", "<C-w>h", {desc = "Move cursor to left window"})
-map("n", "<A-l>", "<C-w>l", {desc = "Move cursor to right window"})
+    { desc = "Move cursor to window above/left of the current one" })
+map("n", "<A-j>", "<C-w>k", { desc = "Move cursor to below window" })
+map("n", "<A-k>", "<C-w>j", { desc = "Move cursor to above window" })
+map("n", "<A-h>", "<C-w>h", { desc = "Move cursor to left window" })
+map("n", "<A-l>", "<C-w>l", { desc = "Move cursor to right window" })
 
-map("n", "<leader>wq", "<C-w>c", {desc = "close current window"})
-map("n", "<leader>wo", "<C-w>o", {desc = "keep current window, close others"})
-map("n", "<leader>wa", "<C-w>o <bar> :q <CR>", {desc = "close all window"})
+map("n", "<leader>wq", "<C-w>c", { desc = "close current window" })
+map("n", "<leader>wo", "<C-w>o", { desc = "keep current window, close others" })
+map("n", "<leader>wa", "<C-w>o <bar> :q <CR>", { desc = "close all window" })
 
-map("n", "<leader><Up>", ":res +5<CR>", {desc = "up res +5"})
-map("n", "<leader><Down>", ":res -5<CR>", {desc = "down res -5"})
+map("n", "<leader><Up>", ":res +5<CR>", { desc = "up res +5" })
+map("n", "<leader><Down>", ":res -5<CR>", { desc = "down res -5" })
 map("n", "<leader><Left>", ":vertical resize-5<CR>",
-    {desc = "vertical resize-5"})
+    { desc = "vertical resize-5" })
 map("n", "<leader><Right>", ":vertical resize+5<CR>",
-    {desc = "vertical resize+5"})
+    { desc = "vertical resize+5" })
 
 -- =======================================================================================
 -- buffer
 -- =======================================================================================
 -- bufferline plugin
-map("n", "<S-n>", ":BufferLineCycleNext<CR>", {desc="Next buffer tab"})
-map("n", "<S-p>", ":BufferLineCyclePrev<CR>", {desc="Previous buffer tab"})
-map("n", "<leader>bn", ":BufferLineCycleNext<CR>", {desc="Next buffer tab"})
-map("n", "<leader>bp", ":BufferLineCyclePrev<CR>", {desc="Previous buffer tab"})
-map("n", ">b", ":BufferLineMoveNext<CR>", {desc="Move buffer tab right"})
-map("n", "<b", ":BufferLineMovePrev<CR>", {desc="Move buffer tab left"})
+map("n", "<S-n>", ":BufferLineCycleNext<CR>", { desc = "Next buffer tab" })
+map("n", "<S-p>", ":BufferLineCyclePrev<CR>", { desc = "Previous buffer tab" })
+map("n", "<leader>bn", ":BufferLineCycleNext<CR>", { desc = "Next buffer tab" })
+map("n", "<leader>bp", ":BufferLineCyclePrev<CR>", { desc = "Previous buffer tab" })
+map("n", ">b", ":BufferLineMoveNext<CR>", { desc = "Move buffer tab right" })
+map("n", "<b", ":BufferLineMovePrev<CR>", { desc = "Move buffer tab left" })
 
 -- "moll/vim-bbye"
-map("n", "<leader>bd", ":Bdelete!<CR>", {desc = "difference between :q and :bd"})
+map("n", "<leader>bd", ":Bdelete!<CR>", { desc = "difference between :q and :bd" })
 map("n", "<leader>br", ":BufferLineCloseRight<CR>")
 map("n", "<leader>bl", ":BufferLineCloseLeft<CR>")
 map("n", "<leader>bc", ":BufferLinePickClose<CR>")
@@ -132,7 +132,7 @@ map("n", "<leader>bc", ":BufferLinePickClose<CR>")
 -- =======================================================================================
 -- lspconfig
 -- =======================================================================================
-map("n", "<leader>li", "<cmd>LspInfo<cr>", {desc = "LSP information"})
+map("n", "<leader>li", "<cmd>LspInfo<cr>", { desc = "LSP information" })
 
 --
 local pluginKeys = {}
@@ -140,22 +140,22 @@ local pluginKeys = {}
 -- nvim-tree
 -- =======================================================================================
 map("n", "<leader>e", ":NvimTreeFindFileToggle<CR>",
-    {desc = "NvimTreeFindFileToggle"})
+    { desc = "NvimTreeFindFileToggle" })
 
 -- https://github.com/kyazdani42/nvim-tree.lua/blob/master/doc/nvim-tree-lua.txt
 pluginKeys.nvimTreeList = {
     -- 打开文件或文件夹
     -- <CR>, o 都映射到 edit 动作上面
     -- edit 打开一个buffer, tabnew 打开一个tab
-    {key = {"<CR>", "o", "<2-LeftMouse>"}, action = "edit"},
-    {key = {"O"}, action = "tabnew"}, {key = "v", action = "vsplit"},
-    {key = "h", action = "split"}, {key = "i", action = "toggle_custom"},
-    {key = ".", action = "toggle_dotfiles"}, -- Hide (dotfiles)
-    {key = "<F5>", action = "refresh"}, {key = "a", action = "create"},
-    {key = "d", action = "remove"}, {key = "r", action = "rename"},
-    {key = "x", action = "cut"}, {key = "c", action = "copy"},
-    {key = "p", action = "paste"}, {key = "s", action = "system_open"},
-    {key = "W", action = "collapse_all"}, {key = "E", action = "expand_all"}
+    { key = { "<CR>", "o", "<2-LeftMouse>" }, action = "edit" },
+    { key = { "O" }, action = "tabnew" }, { key = "v", action = "vsplit" },
+    { key = "h", action = "split" }, { key = "i", action = "toggle_custom" },
+    { key = ".", action = "toggle_dotfiles" }, -- Hide (dotfiles)
+    { key = "<F5>", action = "refresh" }, { key = "a", action = "create" },
+    { key = "d", action = "remove" }, { key = "r", action = "rename" },
+    { key = "x", action = "cut" }, { key = "c", action = "copy" },
+    { key = "p", action = "paste" }, { key = "s", action = "system_open" },
+    { key = "W", action = "collapse_all" }, { key = "E", action = "expand_all" }
 }
 
 -- =======================================================================================
@@ -163,21 +163,21 @@ pluginKeys.nvimTreeList = {
 -- =======================================================================================
 
 map("n", "<leader>tf", "<cmd>ToggleTerm direction=float<cr>",
-    {desc = "Terminal float"})
+    { desc = "Terminal float" })
 map("n", "<leader>th", "<cmd>ToggleTerm size=10 direction=horizontal<cr>",
-    {desc = "Terminal horizontal split on bottom"})
+    { desc = "Terminal horizontal split on bottom" })
 map("n", "<leader>tv", "<cmd>ToggleTerm size=10 direction=vertical<cr>",
-    {desc = "Terminal vertical split on left"})
+    { desc = "Terminal vertical split on left" })
 map("n", "<leader>tt", "<cmd>ToggleTerm size=15 direction=horizontal<cr>",
-    {desc = "Toggle terminal on normal mode"})
+    { desc = "Toggle terminal on normal mode" })
 map("t", "<leader>tt", "<cmd>ToggleTerm size=15 direction=horizontal<cr>",
-    {desc = "Toggle terminal on terminal mode"})
-map("t", "<Esc>", "<c-\\><c-n>", {desc = "change to normal mode in terminal"})
+    { desc = "Toggle terminal on terminal mode" })
+map("t", "<Esc>", "<c-\\><c-n>", { desc = "change to normal mode in terminal" })
 
 -- =======================================================================================
 -- formatting
 -- =======================================================================================
-map("n", "==", ":lua vim.lsp.buf.formatting()<CR>", {desc = "formatting"})
+map("n", "==", ":lua vim.lsp.buf.format{async = true}<CR>", { desc = "formatting" })
 
 -- =======================================================================================
 -- LSP
@@ -205,7 +205,7 @@ pluginKeys.mapLSP = function(mapbuf)
     -- rename
     mapbuf("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
     mapbuf("n", "<leader>sp",
-           "<cmd>lua require'symbols-outline'.toggle_outline()<CR>", opt)
+        "<cmd>lua require'symbols-outline'.toggle_outline()<CR>", opt)
 end
 
 -- =======================================================================================
@@ -213,7 +213,7 @@ end
 -- =======================================================================================
 pluginKeys.cmp = function(cmp)
     return {
-        ["<A-.>"] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}),
+        ["<A-.>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
         ["<A-,>"] = cmp.mapping({
             i = cmp.mapping.abort(),
             c = cmp.mapping.close()
@@ -224,10 +224,10 @@ pluginKeys.cmp = function(cmp)
             select = true,
             behavior = cmp.ConfirmBehavior.Replace
         }),
-        ['<Tab>'] = cmp.mapping.confirm({select = true}),
+        ['<Tab>'] = cmp.mapping.confirm({ select = true }),
         -- 预览窗口上下滚动
-        ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), {"i", "c"}),
-        ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), {"i", "c"})
+        ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+        ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" })
     }
 end
 
@@ -236,8 +236,8 @@ end
 -- =======================================================================================
 pluginKeys.comment = {
     -- Normal
-    toggler = {line = "gcc", block = "gbc"},
-    opleader = {line = "gc", bock = "gb"}
+    toggler = { line = "gcc", block = "gbc" },
+    opleader = { line = "gc", bock = "gb" }
 }
 --
 -- =======================================================================================
@@ -258,15 +258,15 @@ end
 -- =======================================================================================
 
 map("n", "<leader>ff", ":Telescope find_files<CR>",
-    {desc = "Telescope find_files"})
+    { desc = "Telescope find_files" })
 map("n", "<leader>fe", ":Telescope oldfiles<CR> <ESC>",
-    {desc = "Telescope oldfiles"})
+    { desc = "Telescope oldfiles" })
 map("n", "<leader>fb", ":Telescope buffers<CR> <ESC>",
-    {desc = "Telescope buffers"})
+    { desc = "Telescope buffers" })
 map("n", "<leader>fg", ":Telescope live_grep<CR>",
-    {desc = "Telescope live_grep"})
+    { desc = "Telescope live_grep" })
 map("n", "<leader>fh", ":Telescope help_tags<CR>",
-    {desc = "Telescope help_tags"})
+    { desc = "Telescope help_tags" })
 
 pluginKeys.telescopeList = {
     i = {

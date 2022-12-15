@@ -20,6 +20,7 @@ treesitter.setup({
     highlight = { enable = true, additional_vim_regex_highlighting = false },
     -- 启用代码缩进模块 (=)
     indent = { enable = true },
+    -- parser_install_dir = "~/.local/share/nvim/site/pack/packer/start/nvim-treesitter/parser",
     -- nvim-treesitter-textobjects
     -- textobjects = {
     --     select = {
