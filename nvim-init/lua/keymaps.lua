@@ -170,8 +170,8 @@ map("n", "<leader>tv", "<cmd>ToggleTerm size=10 direction=vertical<cr>",
     { desc = "Terminal vertical split on left" })
 map("n", "<leader>tt", "<cmd>ToggleTerm size=15 direction=horizontal<cr>",
     { desc = "Toggle terminal on normal mode" })
-map("t", "<leader>tt", "<cmd>ToggleTerm size=15 direction=horizontal<cr>",
-    { desc = "Toggle terminal on terminal mode" })
+-- map("t", "<leader>tt", "<cmd>ToggleTerm size=15 direction=horizontal<cr>",
+--     { desc = "Toggle terminal on terminal mode" })
 map("t", "<Esc>", "<c-\\><c-n>", { desc = "change to normal mode in terminal" })
 
 -- =======================================================================================

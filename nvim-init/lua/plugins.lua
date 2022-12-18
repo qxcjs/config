@@ -23,13 +23,17 @@ packer.startup({
         -- use {"ellisonleao/gruvbox.nvim"}
         use 'navarasu/onedark.nvim'
 
+        -- dashboard
+        use("glepnir/dashboard-nvim")
+        use("ahmedkhalf/project.nvim")
+
         -- 快捷键提示
         use "folke/which-key.nvim"
 
-        -- -- Terminal
-        use { "akinsho/toggleterm.nvim", tag = '*' }
+        -- Terminal
+        use { "akinsho/toggleterm.nvim", tag = 'v2.2.1' }
         --
-        -- -- 左侧树
+        -- 左侧树
         use({
             "kyazdani42/nvim-tree.lua",
             requires = "kyazdani42/nvim-web-devicons"
@@ -42,23 +46,18 @@ packer.startup({
         -- status 状态栏展示
         use({
             "nvim-lualine/lualine.nvim",
-            requires = { "kyazdani42/nvim-web-devicons" }
+            requires = { "kyazdani42/nvim-web-devicons", "arkav/lualine-lsp-progress" }
         })
         -- 括号补全 depend nvim-cmp
         -- use({"windwp/nvim-autopairs"})
         -- 注释
         use { 'numToStr/Comment.nvim' }
-        use("arkav/lualine-lsp-progress")
 
         -- quick search
         use {
             'nvim-telescope/telescope.nvim',
             requires = { "nvim-lua/plenary.nvim" }
         }
-
-        -- dashboard
-        use("glepnir/dashboard-nvim")
-        use("ahmedkhalf/project.nvim")
 
         -- 代码高亮, 增量选择, 自动缩进等功能
         use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate",
@@ -109,9 +108,9 @@ packer.startup({
 })
 
 -- 保存时自动下载插件
-pcall(vim.cmd, [[
-    augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-    augroup end
-  ]])
+-- pcall(vim.cmd, [[
+--     augroup packer_user_config
+--     autocmd!
+--     autocmd BufWritePost plugins.lua source <afile> | PackerSync
+--     augroup end
+--   ]])

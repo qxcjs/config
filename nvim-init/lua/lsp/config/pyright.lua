@@ -2,7 +2,7 @@
     python format failed, [LSP] Format request failed, no matching language servers.
     Not every LSP supports formating and, if you want to use any linter or formatter through the LSP interface you need something like null-ls
 --]] --
-local status, lspconfig = pcall(require, "lspconfig")
+local status, lsp_config = pcall(require, "lspconfig")
 if not status then
     vim.notify("没有找到 lspconfig")
     return
@@ -13,13 +13,17 @@ local pyright_settings = {
     settings = {
         python = {
             analysis = {
+                autoSearchPaths = true,
+                diagnosticMode = "workspace",
+                useLibraryCodeForTypes = false,
                 typeCheckingMode = "off",
+                -- 不知道为什么不生效
                 diagnosticSeverityOverrides = {
                     reportUnusedVariable = false,
-                    reportUndefinedVariable = true,
+                    reportUndefinedVariable = false,
                     reportUnusedExpression = false,
                     reportMissingTypeStubs = false,
-                    reportMissingImports = true
+                    reportMissingImports = false
                 }
             }
         }
@@ -31,8 +35,6 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     -- 禁用格式化功能，交给专门插件插件处理
-    -- client.resolved_capabilities.document_formatting = false
-    -- client.resolved_capabilities.document_range_formatting = false
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
 
@@ -54,7 +56,7 @@ local root_files = {
     'pyrightconfig.json'
 }
 
-lspconfig['pyright'].setup {
+lsp_config['pyright'].setup {
     -- cmd = {'pyright'},
     settings = pyright_settings,
     on_attach = on_attach,

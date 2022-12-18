@@ -24,11 +24,10 @@ let g:python3_host_prog = system('echo -n "$(which -a python3 | head -n1)"')
 " let g:python3_host_prog = '/home/liss/.pyenv/shims/python3'
 
 lua require('basic')
-
 lua require('style')
-
 lua require('keymaps')
 
+" plugin
 lua require('plugins')
 lua require("plugin-config.which-key")
 lua require("plugin-config.toggleterm")
@@ -51,7 +50,6 @@ lua require("lsp.symbols-outline")
 " lua require("lsp.navigator")
 
 lua require("lsp.config.lua")
-" lua require("lsp.config.pylsp")
 " lua require("lsp.config.java")
 lua require("lsp.config.pyright")
 " lua require("lsp.config.toml")

@@ -28,28 +28,26 @@ local opts = {
             },
             diagnostics = {
                 -- Get the language server to recognize the `vim` global
-                globals = {'vim'}
+                globals = { 'vim' }
             },
             workspace = {
                 -- Make the server aware of Neovim runtime files
                 -- library = vim.api.dfvim_get_runtime_file('', true),
                 library = library_path,
-                checkThirdParty = true
+                checkThirdParty = false
             },
             -- Do not send telemetry data containing a randomized but unique identifier
-            telemetry = {enable = false}
+            telemetry = { enable = false }
         }
     },
-    flags = {debounce_text_changes = 150},
+    flags = { debounce_text_changes = 150 },
     -- cmd = { sumneko_lua_binapp, '-E', sumneko_lua_binpath..'main.lua', '--locale=zh-cn' },
     on_attach = function(client, bufnr)
         print(client.resolved_capabilities.document_formatting)
         -- print(#client.resolved_capabilities)
         -- 禁用格式化功能，交给专门插件插件处理
-        client.resolved_capabilities.document_formatting = false
-        client.resolved_capabilities.document_range_formatting = false
-        -- client.server_capabilities.documentFormattingProvider = false
-        -- client.server_capabilities.documentRangeFormattingProvider = false
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
 
         -- print(type(bufnr))
         -- 关于 table 中明明有内容但是长度为0的问题, https://developer.aliyun.com/article/11393
