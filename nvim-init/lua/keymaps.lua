@@ -213,13 +213,15 @@ end
 -- =======================================================================================
 pluginKeys.cmp = function(cmp)
     return {
-        ["<A-.>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+        ["<A-.>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }), -- 出现补全
+        -- 取消
         ["<A-,>"] = cmp.mapping({
             i = cmp.mapping.abort(),
             c = cmp.mapping.close()
         }),
-        ["<C-k>"] = cmp.mapping.select_prev_item(),
-        ["<C-j>"] = cmp.mapping.select_next_item(),
+        ["<C-k>"] = cmp.mapping.select_prev_item(), -- 上一个
+        ["<C-j>"] = cmp.mapping.select_next_item(), -- 下一个
+        -- 确认
         ["<CR>"] = cmp.mapping.confirm({
             select = true,
             behavior = cmp.ConfirmBehavior.Replace

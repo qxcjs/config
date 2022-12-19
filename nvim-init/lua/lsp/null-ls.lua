@@ -6,20 +6,22 @@ end
 
 local formatting = null_ls.builtins.formatting
 
-null_ls.setup({
+-- https://alpha2phi.medium.com/neovim-for-beginners-lsp-using-null-ls-nvim-bd954bf86b40
+null_ls.setup {
     debug = true,
     log_level = "warn",
+    -- debounce = 150,
+    save_after_format = false,
     sources = {
         -- Formatting
         formatting.shfmt, -- shfmt for shell
-        formatting.lua_format, -- stylua for lua 
+        formatting.lua_format.with({extra_args = {"--column-limit=120 "}}), -- stylua for lua 
         formatting.autopep8, -- autopep8 for python
         formatting.taplo, -- taplo for toml
         formatting.prettier.with({ -- 只比默认配置少了 markdown
             filetypes = {
-                "javascript", "javascriptreact", "typescript",
-                "typescriptreact", "vue", "css", "scss", "less", "html", "json",
-                "yaml", "graphql"
+                "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "css", "scss", "less", "html",
+                "json", "yaml", "graphql"
             },
             prefer_local = "node_modules/.bin"
         })
@@ -32,4 +34,4 @@ null_ls.setup({
             vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()")
         end
     end
-})
+}

@@ -17,7 +17,19 @@ local log = require('vim.lsp.log')
 local library_path = vim.api.nvim_get_runtime_file('', true)
 table.insert(library_path, '/usr/share/nvim/runtime/lua/vim')
 
+local root_files = {
+  '.luarc.json',
+  '.luarc.jsonc',
+  '.luacheckrc',
+  '.stylua.toml',
+  'stylua.toml',
+  'selene.toml',
+  'selene.yml',
+  '.git'
+}
+
 local opts = {
+    root_dir = require('lspconfig.util').root_pattern(unpack(root_files)),
     settings = {
         Lua = {
             runtime = {
