@@ -67,11 +67,11 @@ packer.startup({
         -- use "hrsh7th/cmp-nvim-lsp-document-symbol"
         -- use "hrsh7th/cmp-nvim-lsp-signature-help" -- { name = 'nvim_lsp_signature_help' }
 
-        -- use "hrsh7th/vim-vsnip" -- Snippet 引擎
-        -- use "hrsh7th/cmp-vsnip"
+        use "hrsh7th/vim-vsnip" -- Snippet 引擎
+        use "hrsh7th/cmp-vsnip"
         -- use 'rafamadriz/friendly-snippets'
 
-        -- LSP Icons
+        -- LSP Icons 显示代码提示图标
         use 'onsails/lspkind-nvim'
 
         -- LSP pretty show diagnostics, references, telescope results, quickfix and location lists

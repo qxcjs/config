@@ -5,6 +5,7 @@ if not status then
 end
 
 local formatting = null_ls.builtins.formatting
+local completion = null_ls.builtins.completion
 
 -- https://alpha2phi.medium.com/neovim-for-beginners-lsp-using-null-ls-nvim-bd954bf86b40
 null_ls.setup {
@@ -24,9 +25,9 @@ null_ls.setup {
                 "json", "yaml", "graphql"
             },
             prefer_local = "node_modules/.bin"
-        })
-        -- formatting.fixjson,
+        }) -- formatting.fixjson,
         -- formatting.black.with({ extra_args = { "--fast" } }),
+        -- completion.vsnip
     },
     -- 保存自动格式化
     on_attach = function(client)
