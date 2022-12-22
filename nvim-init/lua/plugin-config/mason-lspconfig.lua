@@ -6,5 +6,5 @@ if not status then
 end
 
 mason_lspconfig.setup({
-    ensure_installed = { "sumneko_lua", "pyright", "taplo" }
+    -- ensure_installed = { "sumneko_lua", "pyright", "taplo" }
 })

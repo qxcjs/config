@@ -1,3 +1,17 @@
+-- vim.g: 全局变量
+-- vim.b: 缓冲区变量
+-- vim.w: 窗口变量
+-- vim.t: 选项卡变量
+-- vim.v: 预定义变量
+-- vim.env: 环境变量
+-- 
+-- vim.o: 行为类似于 :let &{option-name}
+-- vim.go: 行为类似于 :let &g:{option-name}
+-- vim.bo: 适用于 buffer-local 选项，行为类似于 :let &l:{option-name}
+-- vim.wo: 适用于 window-local 选项，行为类似于 :let &l:{option-name}
+--
+-- vim.opt*
+--
 -- utf8
 vim.g.encoding = "UTF-8"
 vim.o.fileencoding = "utf-8"
@@ -80,7 +94,7 @@ vim.o.showtabline = 1
 -- 使用增强状态栏插件后不再需要 vim 的模式提示
 vim.o.showmode = false
 -- 剪切板 https://github.com/neovim/neovim/wiki/FAQ#how-to-use-the-windows-clipboard-from-wsl
-vim.opt.clipboard = 'unnamedplus'
+-- vim.opt.clipboard = 'unnamedplus'
 -- 开启鼠标功能
 vim.o.mouse = a
 
