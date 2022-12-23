@@ -45,8 +45,8 @@ lua require("plugin-config.mason-lspconfig")
 
 " LSP
 lua require("lsp.cmp")
-lua require("lsp.null-ls")
-lua require("lsp.symbols-outline")
+" lua require("lsp.null-ls")
+" lua require("lsp.symbols-outline")
 " lua require("lsp.navigator")
 
 lua require("lsp.config.lua")

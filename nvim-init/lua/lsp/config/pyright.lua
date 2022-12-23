@@ -9,12 +9,14 @@ if not status then
 end
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#pyright
+--
+-- https://github.com/microsoft/pyright/blob/main/docs/settings.md
 local pyright_settings = {
     settings = {
         python = {
             analysis = {
                 autoSearchPaths = true,
-                diagnosticMode = "workspace",
+                diagnosticMode = "openFilesOnly",
                 useLibraryCodeForTypes = false,
                 typeCheckingMode = "off",
                 -- 不知道为什么不生效
