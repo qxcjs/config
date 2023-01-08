@@ -165,27 +165,29 @@ map("n", "==", ":lua vim.lsp.buf.format{async = true}<CR>", {desc = "formatting"
 -- =======================================================================================
 pluginKeys.mapLSP = function(mapbuf)
     -- go xx
-    mapbuf("n", "gd", ":vsplit | lua vim.lsp.buf.definition()<CR>", opt)
+    -- mapbuf("n", "gd", ":vsplit | lua vim.lsp.buf.definition()<CR>", opt)
+    mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)
     mapbuf("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opt)
     mapbuf("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opt)
     mapbuf("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
     mapbuf("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opt)
     mapbuf("n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
     -- diagnostic
-    mapbuf("n", "gp", "<cmd>lua vim.diagnostic.open_float()<CR>", opt)
-    mapbuf("n", "gk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
-    mapbuf("n", "gj", "<cmd>lua vim.diagnostic.goto_next()<CR>", opt)
-    mapbuf('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opt)
+    mapbuf("n", "<leader>ep", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
+    mapbuf("n", "<leader>en", "<cmd>lua vim.diagnostic.goto_next()<CR>", opt)
+    mapbuf('n', '<leader>sd', '<cmd>lua vim.diagnostic.setloclist()<CR>', opt) -- 显示告警列表
+    mapbuf("n", "<leader>se", "<cmd>lua vim.diagnostic.open_float()<CR>", opt) -- 窗口中显示告警信息
     mapbuf("n", "<S-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opt)
     mapbuf('n', '<S-d>', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opt)
     -- mapbuf('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opt)
     -- mapbuf('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opt)
     -- mapbuf('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opt)
-    -- formatting
-    mapbuf("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
     -- rename
     mapbuf("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
     mapbuf("n", "<leader>sp", "<cmd>lua require'symbols-outline'.toggle_outline()<CR>", opt)
+
+    -- Symbols are special keywords in your code such as variables, functions, etc.
+    mapbuf("n", "<leader>ls", "<cmd>lua vim.lsp.buf.document_symbol()<CR>", opt)
 end
 
 -- =======================================================================================
@@ -194,15 +196,16 @@ end
 pluginKeys.cmp = function(cmp)
     local select_opts = {behavior = cmp.SelectBehavior.Select}
     return {
+        -- {"i", "c"} 表示在 insert 模式和 command 模式
         ["<A-.>"] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}), -- 出现补全
         -- 取消 Cancel
-        ["<A-,>"] = cmp.mapping({i = cmp.mapping.abort(), c = cmp.mapping.close()}),
-        ["<C-k>"] = cmp.mapping.select_prev_item(), -- 上一个
-        ["<C-j>"] = cmp.mapping.select_next_item(), -- 下一个
+        ["<C-e>"] = cmp.mapping({i = cmp.mapping.abort(), c = cmp.mapping.close()}),
+        ["<C-p>"] = cmp.mapping.select_prev_item(), -- 上一个
+        ["<C-n>"] = cmp.mapping.select_next_item(), -- 下一个
         ['<Up>'] = cmp.mapping.select_prev_item(select_opts),
         ['<Down>'] = cmp.mapping.select_next_item(select_opts),
         -- 确认 Confirm 
-        ["<CR>"] = cmp.mapping.confirm({select = true, behavior = cmp.ConfirmBehavior.Replace}),
+        ["<CR>"] = cmp.mapping.confirm({select = false, behavior = cmp.ConfirmBehavior.Replace}),
         -- Confirm 
         ['<Tab>'] = cmp.mapping.confirm({select = true}),
         -- 预览窗口上下滚动

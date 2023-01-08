@@ -58,18 +58,17 @@ packer.startup({
         use {"williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim", "neovim/nvim-lspconfig"}
 
         -- 补全
-        use "hrsh7th/nvim-cmp" -- 补全引擎
-
         use "hrsh7th/cmp-nvim-lsp" -- {name = nvim_lsp}
-        -- use "hrsh7th/cmp-buffer" -- {name = buffer}
-        -- use "hrsh7th/cmp-path" -- {name = path}
-        -- use "hrsh7th/cmp-cmdline" -- {name = cmdline}
+        use "hrsh7th/cmp-buffer" -- {name = buffer}
+        use "hrsh7th/cmp-path" -- {name = path}
+        use "hrsh7th/cmp-cmdline" -- {name = cmdline}
         -- use "hrsh7th/cmp-nvim-lsp-document-symbol"
         -- use "hrsh7th/cmp-nvim-lsp-signature-help" -- { name = 'nvim_lsp_signature_help' }
+        use "hrsh7th/nvim-cmp" -- 补全引擎
 
-        use "hrsh7th/vim-vsnip" -- Snippet 引擎
         use "hrsh7th/cmp-vsnip"
-        -- use 'rafamadriz/friendly-snippets'
+        use "hrsh7th/vim-vsnip" -- Snippet 引擎
+        use 'rafamadriz/friendly-snippets'
 
         -- LSP Icons 显示代码提示图标
         use 'onsails/lspkind-nvim'

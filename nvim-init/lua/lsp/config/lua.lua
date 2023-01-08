@@ -15,7 +15,7 @@ local log = require('vim.lsp.log')
 -- local a = vim.lsp.buf.definition
 
 local library_path = vim.api.nvim_get_runtime_file('', true)
-table.insert(library_path, '/usr/share/nvim/runtime/lua/vim')
+-- table.insert(library_path, '/usr/share/nvim/runtime/lua/vim')
 
 local root_files = {
   '.luarc.json',
@@ -36,7 +36,7 @@ local opts = {
                 -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
                 version = 'LuaJIT',
                 -- Setup your lua path
-                path = runtime_path
+                -- path = runtime_path
             },
             diagnostics = {
                 -- Get the language server to recognize the `vim` global
@@ -44,8 +44,8 @@ local opts = {
             },
             workspace = {
                 -- Make the server aware of Neovim runtime files
-                -- library = vim.api.dfvim_get_runtime_file('', true),
-                library = library_path,
+                -- library = vim.api.nvim_get_runtime_file('', true),
+                -- library = library_path,
                 checkThirdParty = false
             },
             -- Do not send telemetry data containing a randomized but unique identifier

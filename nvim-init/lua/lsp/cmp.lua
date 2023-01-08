@@ -10,6 +10,34 @@ if not _ then
     return
 end
 
+local kind_icons = {
+    Class = "ﴯ",
+    Color = "",
+    Constant = "",
+    Constructor = "",
+    Enum = "",
+    EnumMember = "",
+    Event = "",
+    Field = "",
+    File = "",
+    Folder = "",
+    Function = "",
+    Interface = "",
+    Keyword = "",
+    Method = "",
+    Module = "",
+    Operator = "",
+    Property = "ﰠ",
+    Reference = "",
+    Snippet = "",
+    Struct = "",
+    Text = "",
+    TypeParameter = "",
+    Unit = "",
+    Value = "",
+    Variable = ""
+}
+
 -- https://vonheikemen.github.io/devlog/tools/setup-nvim-lspconfig-plus-nvim-cmp/
 cmp.setup({
     -- 指定 snippet 引擎
@@ -20,11 +48,19 @@ cmp.setup({
         end
     },
     -- 补全源
-    sources = cmp.config.sources({{name = "nvim_lsp"}}, {{name = "vsnip"}}, {{name = "buffer", keyword_length = 3}},
-                                 {{name = "path"}}, {{name = 'nvim_lsp_signature_help'}}),
+    -- 为什么要用 {} 分组 ? 不分组 snip 出不来
+    sources = cmp.config.sources({
+        {name = "nvim_lsp", max_item_count = 20, priority_weight = 100}, {name = "vsnip", priority_weight = 120},
+        {name = "buffer", keyword_length = 3}, {name = "path"}, {name = 'nvim_lsp_signature_help'}
+    }),
 
     -- 快捷键设置
     mapping = require("keymaps").cmp(cmp),
+    -- matching = {
+    --     -- fr 也能搜索出 for
+    --     disallow_fuzzy_matching = false
+    -- },
+    -- completion = {keyword_length = 3},
 
     -- 设置补全显示的格式
     formatting = {
@@ -38,13 +74,31 @@ cmp.setup({
         --     end
         -- })
         -- 指定显示顺序 菜单, kind, 类型
-        fields = {'menu', 'abbr', 'kind'},
+        -- fields = {'menu', 'abbr', 'kind'},
+        -- format = function(entry, vim_item)
+        --     local menu_icon = {vsnip = 'v', nvim_lsp = 'λ', luasnip = '⋗', buffer = 'Ω', path = '🖫'}
+        --
+        --     vim_item.menu = menu_icon[entry.source.name]
+        --
+        --     vim_item.dup = ({vsnip = 0})[entry.source.name] or 0
+        --     return vim_item
+        -- end,
         format = function(entry, vim_item)
-            local menu_icon = {nvim_lsp = 'λ', luasnip = '⋗', buffer = 'Ω', path = '🖫'}
-
-            vim_item.menu = menu_icon[entry.source.name]
-
-            vim_item.dup = ({vsnip = 0})[entry.source.name] or 0
+            -- Kind icons
+            vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- Concatonate the icons with name of the item-kind
+            vim_item.menu = ({
+                nvim_lsp = "[LSP]",
+                spell = "[Spellings]",
+                zsh = "[Zsh]",
+                buffer = "[Buffer]",
+                vsnip = "[Snip]",
+                treesitter = "[Treesitter]",
+                calc = "[Calculator]",
+                nvim_lua = "[Lua]",
+                path = "[Path]",
+                nvim_lsp_signature_help = "[Signature]",
+                cmdline = "[Vim Command]"
+            })[entry.source.name]
             return vim_item
         end
     }
@@ -52,6 +106,7 @@ cmp.setup({
 
 -- 命令模式下输入 "/" 启用补全
 cmp.setup.cmdline("/", {
+    -- 绑定快捷键
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({{name = 'nvim_lsp_document_symbol'}}, {{name = 'buffer'}})
 })
