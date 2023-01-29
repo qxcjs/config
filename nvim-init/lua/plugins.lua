@@ -23,21 +23,24 @@ packer.startup({
         use 'navarasu/onedark.nvim'
 
         -- dashboard
-        use "glepnir/dashboard-nvim"
-        use "ahmedkhalf/project.nvim"
+        -- use "glepnir/dashboard-nvim"
+        -- use "ahmedkhalf/project.nvim"
 
         -- 快捷键提示
         use "folke/which-key.nvim"
 
         -- Terminal
         use {"akinsho/toggleterm.nvim", tag = 'v2.2.1'}
-        --
+
         -- 左侧树
         use {"kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons"}
+
         -- tab 展示
         use {"akinsho/bufferline.nvim", requires = {"kyazdani42/nvim-web-devicons", "moll/vim-bbye"}}
+
         -- status 状态栏展示
         use {"nvim-lualine/lualine.nvim", requires = {"kyazdani42/nvim-web-devicons", "arkav/lualine-lsp-progress"}}
+
         -- 括号补全 depend nvim-cmp
         use {"windwp/nvim-autopairs", requires = {"hrsh7th/nvim-cmp"}}
 
@@ -48,12 +51,12 @@ packer.startup({
         use {'nvim-telescope/telescope.nvim', requires = {"nvim-lua/plenary.nvim"}}
 
         -- 代码高亮, 增量选择, 自动缩进等功能
-        use {
-            "nvim-treesitter/nvim-treesitter",
-            run = ":TSUpdate",
-            requires = {{"nvim-treesitter/nvim-treesitter-textobjects"}, {"nvim-treesitter/nvim-treesitter-context"}}
-        }
-
+        -- use {
+        --     "nvim-treesitter/nvim-treesitter",
+        --     run = ":TSUpdate",
+        --     requires = {{"nvim-treesitter/nvim-treesitter-textobjects"}, {"nvim-treesitter/nvim-treesitter-context"}}
+        -- }
+        --
         -- LSP
         use {"williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim", "neovim/nvim-lspconfig"}
 
@@ -68,15 +71,15 @@ packer.startup({
 
         use "hrsh7th/cmp-vsnip"
         use "hrsh7th/vim-vsnip" -- Snippet 引擎
-        use 'rafamadriz/friendly-snippets'
+        -- use 'rafamadriz/friendly-snippets'
 
         -- LSP Icons 显示代码提示图标
         use 'onsails/lspkind-nvim'
 
         -- LSP pretty show diagnostics, references, telescope results, quickfix and location lists
-        use {'folke/trouble.nvim', requires = {'kyazdani42/nvim-web-devicons'}}
+        -- use {'folke/trouble.nvim', requires = {'kyazdani42/nvim-web-devicons'}}
 
-        use {"jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim"}
+        -- use {"jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim"}
 
         -- use({
         --     'ray-x/navigator.lua',

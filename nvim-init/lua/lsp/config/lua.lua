@@ -1,3 +1,4 @@
+local log = require('vim.lsp.log')
 local status, lspconfig = pcall(require, "lspconfig")
 if not status then
     vim.notify("没有找到 lspconfig")
@@ -5,13 +6,12 @@ if not status then
 end
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#sumneko_lua
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, 'lua/?.lua')
-table.insert(runtime_path, 'lua/?/init.lua')
-table.insert(runtime_path, 'lua/vim/lsp/?/?.lua')
-table.insert(runtime_path, '/usr/share/nvim/runtime/lua/vim/')
+-- local runtime_path = vim.split(package.path, ';')
+-- table.insert(runtime_path, 'lua/?.lua')
+-- table.insert(runtime_path, 'lua/?/init.lua')
+-- table.insert(runtime_path, 'lua/vim/lsp/?/?.lua')
+-- table.insert(runtime_path, '/usr/share/nvim/runtime/lua/vim/')
 
-local log = require('vim.lsp.log')
 -- local a = vim.lsp.buf.definition
 
 local library_path = vim.api.nvim_get_runtime_file('', true)
@@ -82,7 +82,7 @@ local opts = {
         -- 绑定快捷键
         require('keymaps').mapLSP(buf_set_keymap)
         -- 保存时自动格式化
-        vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()')
+        -- vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()')
     end
 }
 
