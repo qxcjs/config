@@ -88,7 +88,7 @@ packer.startup({
         --         {'neovim/nvim-lspconfig'}
         --     }
         -- })
-        -- use 'simrat39/symbols-outline.nvim'
+        use 'simrat39/symbols-outline.nvim'
         -- use "mfussenegger/nvim-jdtls"
         if install_plugins then require('packer').sync() end
     end,

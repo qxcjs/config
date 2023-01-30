@@ -6,9 +6,9 @@ if not status then
 end
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#sumneko_lua
--- local runtime_path = vim.split(package.path, ';')
--- table.insert(runtime_path, 'lua/?.lua')
--- table.insert(runtime_path, 'lua/?/init.lua')
+local runtime_path = vim.split(package.path, ';')
+table.insert(runtime_path, 'lua/?.lua')
+table.insert(runtime_path, 'lua/?/init.lua')
 -- table.insert(runtime_path, 'lua/vim/lsp/?/?.lua')
 -- table.insert(runtime_path, '/usr/share/nvim/runtime/lua/vim/')
 
@@ -45,7 +45,7 @@ local opts = {
             workspace = {
                 -- Make the server aware of Neovim runtime files
                 -- library = vim.api.nvim_get_runtime_file('', true),
-                -- library = library_path,
+                library = library_path,
                 checkThirdParty = false
             },
             -- Do not send telemetry data containing a randomized but unique identifier
@@ -55,7 +55,7 @@ local opts = {
     flags = { debounce_text_changes = 150 },
     -- cmd = { sumneko_lua_binapp, '-E', sumneko_lua_binpath..'main.lua', '--locale=zh-cn' },
     on_attach = function(client, bufnr)
-        print(client.resolved_capabilities.document_formatting)
+        log.info('lua capabilities document_formatting : ',client.server_capabilities.document_formatting)
         -- print(#client.resolved_capabilities)
         -- 禁用格式化功能，交给专门插件插件处理
         client.server_capabilities.documentFormattingProvider = false
