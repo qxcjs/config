@@ -33,7 +33,7 @@ packer.startup({
         use {"akinsho/toggleterm.nvim", tag = 'v2.2.1'}
 
         -- 左侧树
-        use {"kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons"}
+        use {"kyazdani42/nvim-tree.lua", requires = {"kyazdani42/nvim-web-devicons", "ahmedkhalf/project.nvim"}}
 
         -- tab 展示
         use {"akinsho/bufferline.nvim", requires = {"kyazdani42/nvim-web-devicons", "moll/vim-bbye"}}

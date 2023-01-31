@@ -126,7 +126,8 @@ local pluginKeys = {}
 -- =======================================================================================
 -- nvim-tree
 -- =======================================================================================
-map("n", "<leader>e", ":NvimTreeFindFileToggle<CR>", {desc = "NvimTreeFindFileToggle"})
+-- map("n", "<leader>e", ":NvimTreeFindFileToggle<CR>", {desc = "NvimTreeFindFileToggle"})
+map("n", "<leader>e", ":NvimTreeToggle<CR>", {desc = "NvimTreeToggle"})
 
 -- https://github.com/kyazdani42/nvim-tree.lua/blob/master/doc/nvim-tree-lua.txt
 pluginKeys.nvimTreeList = {
@@ -150,7 +151,8 @@ map("n", "<leader>tf", "<cmd>ToggleTerm direction=float<cr>", {desc = "Terminal 
 map("n", "<leader>th", "<cmd>ToggleTerm size=10 direction=horizontal<cr>",
     {desc = "Terminal horizontal split on bottom"})
 map("n", "<leader>tv", "<cmd>ToggleTerm size=10 direction=vertical<cr>", {desc = "Terminal vertical split on left"})
-map("n", "<leader>tt", "<cmd>ToggleTerm size=15 direction=horizontal<cr>", {desc = "Toggle terminal on normal mode"})
+-- map("n", "<leader>tt", "<cmd>ToggleTerm size=15 direction=horizontal<cr>", {desc = "Toggle terminal on normal mode"})
+map("n", "<leader>tt", ":let $BUF_DIR=expand('%:p:h')<CR> :<cmd>ToggleTerm size=15 direction=horizontal dir=$BUF_DIR<cr>", {desc = "Toggle terminal on normal mode"})
 -- map("t", "<leader>tt", "<cmd>ToggleTerm size=15 direction=horizontal<cr>",
 --     { desc = "Toggle terminal on terminal mode" })
 map("t", "<Esc>", "<c-\\><c-n>", {desc = "change to normal mode in terminal"})

@@ -8,7 +8,9 @@ toggleterm.setup({
     size = 10,
     open_mapping = [[<F7>]],
     -- shading_factor = 2,
-    direction = "float"
+    direction = "float",
+    autochdir = true,
+    start_in_insert = true,
     -- persist_size = false
 })
 

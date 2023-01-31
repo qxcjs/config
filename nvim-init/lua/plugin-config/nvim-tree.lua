@@ -1,3 +1,8 @@
+
+require("project_nvim").setup {
+    patterns = { ".git", ".svn", "package.json", ".pyproject.tomal"},
+}
+
 local ok, nvim_tree = pcall(require, "nvim-tree")
 if not ok then
     vim.notify("没有找到 nvim-tree")
@@ -7,15 +12,21 @@ end
 -- 列表操作快捷键
 local list_keys = require('keymaps').nvimTreeList
 nvim_tree.setup({
+    -- root_dirs = {".git"},
     -- 不显示 git 状态图标
     git = { enable = false },
     -- project plugin 需要这样设置
     update_cwd = true,
-    update_focused_file = { enable = true, update_cwd = true },
+    update_focused_file = { enable = true, update_cwd = true, update_root=true},
+    sync_root_with_cwd = true,
+    respect_buf_cwd = true,
     -- 隐藏 .文件 和 node_modules 文件夹
     filters = {
+        -- 不显示隐藏文件
         dotfiles = true,
-        custom = { 'node_modules', "**/logs", "**/__pycache__", "__pypackages__" },
+        -- 不显示 .git 目录中的内容
+        custom = { '.git','node_modules', "**/logs", "**/__pycache__", "__pypackages__" },
+        -- 显示 .gitignore
         exclude = { ".gitignore" }
     },
     view = {

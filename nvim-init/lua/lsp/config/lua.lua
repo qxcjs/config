@@ -45,7 +45,7 @@ local opts = {
             workspace = {
                 -- Make the server aware of Neovim runtime files
                 -- library = vim.api.nvim_get_runtime_file('', true),
-                library = library_path,
+                -- library = library_path,
                 checkThirdParty = false
             },
             -- Do not send telemetry data containing a randomized but unique identifier
