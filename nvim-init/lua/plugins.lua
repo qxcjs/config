@@ -60,6 +60,8 @@ packer.startup({
         -- LSP
         use {"williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim", "neovim/nvim-lspconfig"}
 
+        use "lukas-reineke/indent-blankline.nvim"
+
         -- 补全
         use "hrsh7th/cmp-nvim-lsp" -- {name = nvim_lsp}
         use "hrsh7th/cmp-buffer" -- {name = buffer}
