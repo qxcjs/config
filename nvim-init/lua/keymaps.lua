@@ -160,7 +160,7 @@ map("t", "<Esc>", "<c-\\><c-n>", {desc = "change to normal mode in terminal"})
 -- =======================================================================================
 -- formatting
 -- =======================================================================================
-map("n", "==", ":lua vim.lsp.buf.format{async = true}<CR>", {desc = "formatting"})
+map("n", "==", ":lua vim.lsp.buf.format{timeout_ms = 5000,async = true}<CR>", {desc = "formatting"})
 
 -- =======================================================================================
 -- LSP
@@ -175,10 +175,10 @@ pluginKeys.mapLSP = function(mapbuf)
     mapbuf("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opt)
     mapbuf("n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
     -- diagnostic
+    mapbuf("n", "<leader>el", "<cmd>lua vim.diagnostic.open_float()<CR>", opt) -- 窗口中显示告警信息
     mapbuf("n", "<leader>ep", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
     mapbuf("n", "<leader>en", "<cmd>lua vim.diagnostic.goto_next()<CR>", opt)
     mapbuf('n', '<leader>sd', '<cmd>lua vim.diagnostic.setloclist()<CR>', opt) -- 显示告警列表
-    mapbuf("n", "<leader>se", "<cmd>lua vim.diagnostic.open_float()<CR>", opt) -- 窗口中显示告警信息
     mapbuf("n", "<S-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opt)
     mapbuf('n', '<S-d>', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opt)
     -- mapbuf('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opt)

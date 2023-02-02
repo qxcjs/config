@@ -48,7 +48,7 @@ packer.startup({
         use 'numToStr/Comment.nvim'
 
         -- quick search
-        use {'nvim-telescope/telescope.nvim', requires = {"nvim-lua/plenary.nvim"}}
+        use {'nvim-telescope/telescope.nvim', requires = {"nvim-lua/plenary.nvim","kyazdani42/nvim-web-devicons"}}
 
         -- 代码高亮, 增量选择, 自动缩进等功能
         -- use {
@@ -81,7 +81,7 @@ packer.startup({
         -- LSP pretty show diagnostics, references, telescope results, quickfix and location lists
         -- use {'folke/trouble.nvim', requires = {'kyazdani42/nvim-web-devicons'}}
 
-        -- use {"jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim"}
+        use {"jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim"}
 
         -- use({
         --     'ray-x/navigator.lua',

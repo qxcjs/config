@@ -61,8 +61,6 @@ vim.wo.wrap = false
 vim.o.whichwrap = '<,>,[,]'
 -- 允许隐藏被修改过的buffer
 vim.o.hidden = true
--- 鼠标支持
-vim.o.mouse = "a"
 -- 禁止创建备份文件
 vim.o.backup = false
 vim.o.writebackup = false
@@ -96,6 +94,6 @@ vim.o.showmode = false
 -- 剪切板 https://github.com/neovim/neovim/wiki/FAQ#how-to-use-the-windows-clipboard-from-wsl
 vim.opt.clipboard = 'unnamedplus'
 -- 开启鼠标功能
-vim.o.mouse = a
+vim.o.mouse = "a"
 
 vim.lsp.set_log_level("debug")

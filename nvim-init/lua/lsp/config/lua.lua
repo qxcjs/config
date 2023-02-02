@@ -18,29 +18,26 @@ local library_path = vim.api.nvim_get_runtime_file('', true)
 -- table.insert(library_path, '/usr/share/nvim/runtime/lua/vim')
 
 local root_files = {
-  '.luarc.json',
-  '.luarc.jsonc',
-  '.luacheckrc',
-  '.stylua.toml',
-  'stylua.toml',
-  'selene.toml',
-  'selene.yml',
-  '.git'
+    '.luarc.json', '.luarc.jsonc', '.luacheckrc', '.stylua.toml', 'stylua.toml', 'selene.toml', 'selene.yml', '.git'
 }
 
 local opts = {
+    -- cmd = {'lua-language-server', '--check', 'false'},
     root_dir = require('lspconfig.util').root_pattern(unpack(root_files)),
     settings = {
+        -- https://github.com/sumneko/lua-language-server/blob/master/locale/en-us/setting.lua
         Lua = {
             runtime = {
                 -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                version = 'LuaJIT',
+                version = 'LuaJIT'
                 -- Setup your lua path
                 -- path = runtime_path
             },
             diagnostics = {
                 -- Get the language server to recognize the `vim` global
-                globals = { 'vim' }
+                globals = {'vim'},
+                -- 禁用 lsp server 自带的 diagnostic, 使用 luacheck
+                enable = false
             },
             workspace = {
                 -- Make the server aware of Neovim runtime files
@@ -49,13 +46,13 @@ local opts = {
                 checkThirdParty = false
             },
             -- Do not send telemetry data containing a randomized but unique identifier
-            telemetry = { enable = false }
+            telemetry = {enable = false}
         }
     },
-    flags = { debounce_text_changes = 150 },
+    flags = {debounce_text_changes = 150},
     -- cmd = { sumneko_lua_binapp, '-E', sumneko_lua_binpath..'main.lua', '--locale=zh-cn' },
     on_attach = function(client, bufnr)
-        log.info('lua capabilities document_formatting : ',client.server_capabilities.document_formatting)
+        log.info('lua capabilities document_formatting : ', client.server_capabilities.document_formatting)
         -- print(#client.resolved_capabilities)
         -- 禁用格式化功能，交给专门插件插件处理
         client.server_capabilities.documentFormattingProvider = false
@@ -75,9 +72,7 @@ local opts = {
         --     -- for key, value in pairs(data) do print('\t', key, value) end
         -- end
 
-        local function buf_set_keymap(...)
-            vim.api.nvim_buf_set_keymap(bufnr, ...)
-        end
+        local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 
         -- 绑定快捷键
         require('keymaps').mapLSP(buf_set_keymap)

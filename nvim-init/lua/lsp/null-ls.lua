@@ -6,6 +6,7 @@ end
 
 local formatting = null_ls.builtins.formatting
 local completion = null_ls.builtins.completion
+local diagnostics = null_ls.builtins.diagnostics
 
 -- https://alpha2phi.medium.com/neovim-for-beginners-lsp-using-null-ls-nvim-bd954bf86b40
 null_ls.setup {
@@ -15,24 +16,26 @@ null_ls.setup {
     save_after_format = false,
     sources = {
         -- Formatting
-        formatting.shfmt, -- shfmt for shell
-        formatting.lua_format.with({extra_args = {"--column-limit=120 "}}), -- stylua for lua 
-        formatting.autopep8, -- autopep8 for python
-        formatting.taplo, -- taplo for toml
+        formatting.shfmt, -- for shell
+        formatting.lua_format.with({extra_args = {"--column-limit=120"}}), -- for lua
+        -- formatting.stylua.with({extra_args = {"--column-width=150"}}), -- for lua
+        -- formatting.flake8,
+        formatting.taplo, -- for .toml
         formatting.prettier.with({ -- 只比默认配置少了 markdown
             filetypes = {
                 "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "css", "scss", "less", "html",
                 "json", "yaml", "graphql"
             },
             prefer_local = "node_modules/.bin"
-        }) -- formatting.fixjson,
-        -- formatting.black.with({ extra_args = { "--fast" } }),
+        }), -- formatting.fixjson,
+        formatting.black.with({extra_args = {"--fast"}}), -- for python
+        diagnostics.luacheck.with({extra_args = {"--ignore", "vim", "--max-line-length", "120"}}) -- for lua
         -- completion.vsnip
-    },
+    }
     -- 保存自动格式化
-    on_attach = function(client)
-        if client.server_capabilities.documentFormattingProvider then
-            vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()")
-        end
-    end
+    -- on_attach = function(client)
+    --     if client.server_capabilities.documentFormattingProvider then
+    --         vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()")
+    --     end
+    -- end
 }
