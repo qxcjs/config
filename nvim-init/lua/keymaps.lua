@@ -20,6 +20,7 @@ end
 
 -- 快速打开vim配置文件
 map("n", "<leader>ov", ":tabnew " .. vim.g.nvim_init_home .. "/init.vim<CR>", {desc = "quick open vim config"})
+map("n", "<leader>so", ":so " .. vim.g.nvim_init_home .. "/init.vim<CR>", {desc = "quick source vim config"})
 
 -- 命令行下 Ctrl+j/k  上一个下一个
 -- map("c", "<C-j>", "<C-n>", {noremap = false})

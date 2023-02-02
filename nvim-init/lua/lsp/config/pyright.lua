@@ -14,6 +14,7 @@ end
 local pyright_settings = {
     settings = {
         python = {
+            extraPaths = {"__pypackages__/3.10/lib/"},
             analysis = {
                 autoSearchPaths = true,
                 diagnosticMode = "openFilesOnly",
@@ -21,11 +22,11 @@ local pyright_settings = {
                 typeCheckingMode = "off",
                 -- 不知道为什么不生效
                 diagnosticSeverityOverrides = {
-                    reportUnusedVariable = false,
-                    reportUndefinedVariable = false,
-                    reportUnusedExpression = false,
-                    reportMissingTypeStubs = false,
-                    reportMissingImports = false
+                    reportUnusedVariable = "none",
+                    reportUndefinedVariable = "none",
+                    reportUnusedExpression = "none",
+                    reportMissingTypeStubs = "none",
+                    reportMissingImports = "none"
                 }
             }
         }
@@ -40,10 +41,13 @@ local on_attach = function(client, bufnr)
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
 
-    local function buf_set_keymap(...)
-        vim.api.nvim_buf_set_keymap(bufnr, ...)
-    end
+    local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 
+    local signs = {Error = " ", Warn = " ", Hint = " ", Info = " "}
+    for type, icon in pairs(signs) do
+        local hl = "DiagnosticSign" .. type
+        vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = hl})
+    end
     -- 绑定快捷键
     require('keymaps').mapLSP(buf_set_keymap)
 end
@@ -53,10 +57,7 @@ local lsp_flags = {
     debounce_text_changes = 150
 }
 
-local root_files = {
-    'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', 'Pipfile',
-    'pyrightconfig.json'
-}
+local root_files = {'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', 'Pipfile', 'pyrightconfig.json'}
 
 lsp_config['pyright'].setup {
     -- cmd = {'pyright'},
