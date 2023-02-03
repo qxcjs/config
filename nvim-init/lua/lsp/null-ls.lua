@@ -17,7 +17,7 @@ null_ls.setup {
     sources = {
         -- Formatting
         formatting.shfmt, -- for shell
-        formatting.lua_format.with({extra_args = {"--column-limit=120"}}), -- for lua
+        formatting.lua_format.with({extra_args = {"--column-limit=128"}}), -- for lua
         -- formatting.stylua.with({extra_args = {"--column-width=150"}}), -- for lua
         -- formatting.flake8,
         formatting.taplo, -- for .toml
@@ -29,7 +29,7 @@ null_ls.setup {
             prefer_local = "node_modules/.bin"
         }), -- formatting.fixjson,
         formatting.black.with({extra_args = {"--fast"}}), -- for python
-        diagnostics.luacheck.with({extra_args = {"--ignore", "vim", "--max-line-length", "120"}}) -- for lua
+        diagnostics.luacheck.with({extra_args = {"--ignore", "vim", "--max-line-length", "128"}}) -- for lua
         -- completion.vsnip
     }
     -- 保存自动格式化

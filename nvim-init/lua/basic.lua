@@ -4,7 +4,7 @@
 -- vim.t: 选项卡变量
 -- vim.v: 预定义变量
 -- vim.env: 环境变量
--- 
+
 -- vim.o: 行为类似于 :let &{option-name}
 -- vim.go: 行为类似于 :let &g:{option-name}
 -- vim.bo: 适用于 buffer-local 选项，行为类似于 :let &l:{option-name}
@@ -94,6 +94,6 @@ vim.o.showmode = false
 -- 剪切板 https://github.com/neovim/neovim/wiki/FAQ#how-to-use-the-windows-clipboard-from-wsl
 vim.opt.clipboard = 'unnamedplus'
 -- 开启鼠标功能
-vim.o.mouse = "a"
+-- vim.o.mouse = vim.o.mouse - "a"
 
-vim.lsp.set_log_level("debug")
+vim.lsp.set_log_level("info")
