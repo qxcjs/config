@@ -76,6 +76,14 @@ nvim_map("v", "<C-j>", "5j")
 nvim_map("v", "<C-k>", "5k")
 
 -- =======================================================================================
+-- jump
+-- =======================================================================================
+vim_map('n', '<leader>tjl', "<cmd>lua require('telescope.builtin').jumplist({show_line=true, trim_text=true}) <CR>",
+        {desc = "Lists items from Vim's jumplist, jumps to location on"})
+-- vim_map('n', '<leader>b', "<Ctrl-O>", {desc = "Back"})
+-- vim_map('n', '<leader>f', "<Ctrl-I>", {desc = "Forword"})
+
+-- =======================================================================================
 -- window
 -- =======================================================================================
 -- split the screens to up (horizontal), down (horizontal), left (vertical), right (vertical)
@@ -84,7 +92,6 @@ nvim_map("n", "<leader>sk", ":set splitbelow<CR>:split<CR>", {desc = "split wind
 nvim_map("n", "<leader>sh", ":set nosplitright<CR>:vsplit<CR>:set splitright<CR>", {desc = "split window right keep cursor"})
 nvim_map("n", "<leader>sl", ":set splitright<CR>:vsplit<CR>", {desc = "split window right move cursor"})
 
---
 nvim_map("n", "srh", "<C-w>b<C-w>K", {desc = "go to bottom window then move to the very top"})
 nvim_map("n", "srv", "<C-w>b<C-w>H", {desc = "go to bottom window then move to the far left"})
 nvim_map("n", "<leader>sh", "<C-w>t<C-w>K", {desc = "go to top window then move to the very top"})
@@ -110,8 +117,8 @@ nvim_map("n", "<leader><Right>", ":vertical resize+5<CR>", {desc = "vertical res
 -- buffer
 -- =======================================================================================
 -- bufferline plugin
-nvim_map("n", "<S-n>", ":BufferLineCycleNext<CR>", {desc = "Next buffer tab"})
-nvim_map("n", "<S-p>", ":BufferLineCyclePrev<CR>", {desc = "Previous buffer tab"})
+-- nvim_map("n", "<S-n>", ":BufferLineCycleNext<CR>", {desc = "Next buffer tab"})
+-- nvim_map("n", "<S-p>", ":BufferLineCyclePrev<CR>", {desc = "Previous buffer tab"})
 nvim_map("n", "<leader>bn", ":BufferLineCycleNext<CR>", {desc = "Next buffer tab"})
 nvim_map("n", "<leader>bp", ":BufferLineCyclePrev<CR>", {desc = "Previous buffer tab"})
 nvim_map("n", ">b", ":BufferLineMoveNext<CR>", {desc = "Move buffer tab right"})
@@ -224,18 +231,19 @@ nvim_map("n", "<leader>fh", ":Telescope help_tags<CR>", {desc = "Telescope help_
 local builtin = require('telescope.builtin')
 
 vim_map('n', '<leader>tgi', builtin.lsp_implementations, {desc = "Lists LSP references for word under the cursor [Telescope]"})
-vim_map('n', '<leader>tgd', builtin.lsp_definitions, {desc = "Goto the definition of the word under the cursor [Telescope]"})
+vim_map('n', '<leader>tgd', function() builtin.lsp_definitions({show_line = false, fname_width=15, trim_text=true}) end,
+        {desc = "Goto the definition of the word under the cursor [Telescope]"})
 vim_map('n', '<leader>tgt', builtin.lsp_type_definitions,
         {desc = "Goto the definition of the type of the word under the cursor [Telescope]"})
-vim_map('n', '<leader>tlr', builtin.lsp_references, {desc = "Lists LSP references for word under the cursor [Telescope]"})
+-- vim_map('n', '<leader>tlr', builtin.lsp_references, {desc = "Lists LSP references for word under the cursor [Telescope]"})
+vim_map('n', '<leader>tlr', "<cmd>lua require('telescope.builtin').lsp_references({jump_type=tab}) <CR>",
+        {desc = "Lists LSP references for word under the cursor [Telescope]"})
 vim_map('n', '<leader>tls', builtin.lsp_document_symbols,
         {desc = "Lists LSP document symbols in the current buffer [Telescope]"})
 vim_map('n', '<leader>tli', builtin.lsp_incoming_calls,
         {desc = "Lists LSP incoming calls for word under the cursor [Telescope]"})
 vim_map('n', '<leader>tlo', builtin.lsp_outgoing_calls,
         {desc = "Lists LSP outgoing calls for word under the cursor [Telescope]"})
--- vim_map('n', '<leader>tle', builtin.diagnostics({bufnr = 0}),
---        {desc = "Lists Diagnostics for current open buffer [Telescope]"})
 nvim_map('n', '<leader>tle', "<cmd>lua require('telescope.builtin').diagnostics({bufnr = 0})<CR>",
          {desc = "Lists Diagnostics for current open buffer [Telescope]"})
 
