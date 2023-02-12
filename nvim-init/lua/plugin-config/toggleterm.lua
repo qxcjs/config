@@ -4,6 +4,7 @@ if not ok then
     return
 end
 
+-- https://github.com/akinsho/toggleterm.nvim/issues/346
 toggleterm.setup({
     size = 10,
     open_mapping = [[<F7>]],
@@ -11,6 +12,11 @@ toggleterm.setup({
     direction = "float",
     autochdir = true,
     start_in_insert = true,
+    on_open= function (term)
+        -- print(vim.inspect(term.bufnr))
+        -- print(vim.inspect(term))
+        -- vim.cmd('cd /mnt/f')
+    end
     -- persist_size = false
 })
 

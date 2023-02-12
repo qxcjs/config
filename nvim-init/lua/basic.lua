@@ -96,4 +96,8 @@ vim.opt.clipboard = 'unnamedplus'
 -- 开启鼠标功能
 -- vim.o.mouse = vim.o.mouse - "a"
 
+-- https://vim.fandom.com/wiki/Set_working_directory_to_the_current_file
+vim.g.autochdir=true
+
+
 vim.lsp.set_log_level("info")
