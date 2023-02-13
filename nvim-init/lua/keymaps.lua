@@ -159,11 +159,13 @@ pluginKeys.nvimTreeList = {
 -- Toggleterm Terminal
 -- =======================================================================================
 
+-- vim_map("n", "<F6>", ":let $VIM_DIR=expand('%:p:h')<CR>:terminal<CR>A<CR>cd $VIM_DIR<CR>", {desc = "Terminal float"})
 nvim_map("n", "<leader>tf", "<cmd>ToggleTerm direction=float<cr>", {desc = "Terminal float"})
 nvim_map("n", "<leader>th", "<cmd>ToggleTerm size=10 direction=horizontal<cr>", {desc = "Terminal horizontal split on bottom"})
 nvim_map("n", "<leader>tv", "<cmd>ToggleTerm size=10 direction=vertical<cr>", {desc = "Terminal vertical split on left"})
 -- map("n", "<leader>tt", "<cmd>ToggleTerm size=15 direction=horizontal<cr>", {desc = "Toggle terminal on normal mode"})
-nvim_map("n", "<leader>tt", ":let $BUF_DIR=expand('%:p:h') | :ToggleTerm size=15 direction=horizontal dir=$BUF_DIR<cr>",
+nvim_map("n", "<leader>tt",
+         ":let $BUF_DIR=expand('%:p:h') | :ToggleTerm size=15 direction=horizontal dir=$BUF_DIR<cr> cd $BUF_DIR <CR>",
          {desc = "Toggle terminal on normal mode"})
 -- map("t", "<leader>tt", "<cmd>ToggleTerm size=15 direction=horizontal<cr>",
 --     { desc = "Toggle terminal on terminal mode" })
@@ -231,12 +233,13 @@ nvim_map("n", "<leader>fh", ":Telescope help_tags<CR>", {desc = "Telescope help_
 local builtin = require('telescope.builtin')
 
 vim_map('n', '<leader>tgi', builtin.lsp_implementations, {desc = "Lists LSP references for word under the cursor [Telescope]"})
-vim_map('n', '<leader>tgd', function() builtin.lsp_definitions({show_line = false, fname_width=15, trim_text=true}) end,
+vim_map('n', '<leader>tgd', function() builtin.lsp_definitions({show_line = false, fname_width = 15, trim_text = true}) end,
         {desc = "Goto the definition of the word under the cursor [Telescope]"})
 vim_map('n', '<leader>tgt', builtin.lsp_type_definitions,
         {desc = "Goto the definition of the type of the word under the cursor [Telescope]"})
 -- vim_map('n', '<leader>tlr', builtin.lsp_references, {desc = "Lists LSP references for word under the cursor [Telescope]"})
-vim_map('n', '<leader>tlr', "<cmd>lua require('telescope.builtin').lsp_references({jump_type=tab}) <CR>",
+vim_map('n', '<leader>tlr',
+        function() builtin.lsp_references({jump_type = 'never', show_line = false, fname_width = 15, trim_text = true}) end,
         {desc = "Lists LSP references for word under the cursor [Telescope]"})
 vim_map('n', '<leader>tls', builtin.lsp_document_symbols,
         {desc = "Lists LSP document symbols in the current buffer [Telescope]"})
