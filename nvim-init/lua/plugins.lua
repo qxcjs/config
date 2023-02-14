@@ -48,7 +48,7 @@ packer.startup({
         use 'numToStr/Comment.nvim'
 
         -- quick search
-        use {'nvim-telescope/telescope.nvim', requires = {"nvim-lua/plenary.nvim","kyazdani42/nvim-web-devicons"}}
+        use {'nvim-telescope/telescope.nvim', requires = {"nvim-lua/plenary.nvim", "kyazdani42/nvim-web-devicons"}}
 
         -- 代码高亮, 增量选择, 自动缩进等功能
         -- use {
@@ -72,8 +72,7 @@ packer.startup({
         use "hrsh7th/nvim-cmp" -- 补全引擎
 
         use "hrsh7th/cmp-vsnip"
-        use "hrsh7th/vim-vsnip" -- Snippet 引擎
-        -- use 'rafamadriz/friendly-snippets'
+        use {"hrsh7th/vim-vsnip", requires = {{'rafamadriz/friendly-snippets', after = 'vim-vsnip'}}} -- Snippet 引擎
 
         -- LSP Icons 显示代码提示图标
         use 'onsails/lspkind-nvim'

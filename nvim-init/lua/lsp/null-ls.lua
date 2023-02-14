@@ -23,13 +23,14 @@ null_ls.setup {
         formatting.taplo, -- for .toml
         formatting.prettier.with({ -- 只比默认配置少了 markdown
             filetypes = {
-                "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "css", "scss", "less", "html",
-                "json", "yaml", "graphql"
+                "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "css", "scss", "less", "html", "json",
+                "yaml", "graphql"
             },
             prefer_local = "node_modules/.bin"
         }), -- formatting.fixjson,
         formatting.black.with({extra_args = {"--fast"}}), -- for python
-        diagnostics.luacheck.with({extra_args = {"--ignore", "vim", "--max-line-length", "128"}}) -- for lua
+        diagnostics.luacheck.with({extra_args = {"--ignore", "vim", "--max-line-length", "128"}}), -- for lua
+        -- diagnostics.ruff
         -- completion.vsnip
     }
     -- 保存自动格式化

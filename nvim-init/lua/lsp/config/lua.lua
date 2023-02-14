@@ -81,4 +81,4 @@ local opts = {
     end
 }
 
-lspconfig.sumneko_lua.setup(opts)
+lspconfig.lua_ls.setup(opts)

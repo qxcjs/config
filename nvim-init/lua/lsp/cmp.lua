@@ -10,6 +10,8 @@ if not _ then
     return
 end
 
+vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
+
 local kind_icons = {
     Class = "ﴯ",
     Color = "",
@@ -49,10 +51,15 @@ cmp.setup({
     },
     -- 补全源
     -- 为什么要用 {} 分组 ? 不分组 snip 出不来
-    sources = cmp.config.sources({
-        {name = "nvim_lsp", max_item_count = 20, priority_weight = 100}, {name = "vsnip", priority_weight = 120},
-        {name = "buffer", keyword_length = 3}, {name = "path"}, {name = 'nvim_lsp_signature_help'}
-    }),
+    -- sources = cmp.config.sources({
+    --     {name = "nvim_lsp", max_item_count = 10, priority_weight = 100},
+    --     {name = "vsnip", pmax_item_count = 10, riority_weight = 120, keyword_length = 2}
+    -- }, {{name = "buffer", keyword_length = 3}, {name = "path"}, {name = 'nvim_lsp_signature_help'}}),
+    --  :h  cmp-config.sources
+    sources = cmp.config.sources {
+        {name = 'nvim_lsp', group_index = 1, max_item_count = 15}, {name = "vsnip", group_index = 1},
+        {name = "buffer", group_index = 2}, {name = "path", group_index = 3}
+    },
 
     -- 快捷键设置
     mapping = require("keymaps").cmp(cmp),
@@ -121,4 +128,4 @@ cmp.setup.cmdline(":", {
 -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- The following example advertise capabilities to `pyright`.
--- require'lspconfig'.pyright.setup {capabilities = capabilities}
+-- require('lspconfig')['pyright'].setup {capabilities = capabilities}

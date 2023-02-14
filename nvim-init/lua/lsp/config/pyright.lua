@@ -59,10 +59,14 @@ local lsp_flags = {
 
 local root_files = {'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', 'Pipfile', 'pyrightconfig.json'}
 
+-- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 lsp_config['pyright'].setup {
     -- cmd = {'pyright'},
     settings = pyright_settings,
     on_attach = on_attach,
     flags = lsp_flags,
-    root_dir = require('lspconfig.util').root_pattern(unpack(root_files))
+    root_dir = require('lspconfig.util').root_pattern(unpack(root_files)),
+    capabilities = capabilities
 }
