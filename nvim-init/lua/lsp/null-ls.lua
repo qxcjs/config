@@ -29,7 +29,8 @@ null_ls.setup {
             prefer_local = "node_modules/.bin"
         }), -- formatting.fixjson,
         formatting.black.with({extra_args = {"--fast"}}), -- for python
-        diagnostics.luacheck.with({extra_args = {"--ignore", "vim", "--max-line-length", "128"}}), -- for lua
+        formatting.sql_formatter.with({extra_args = {"--language", "mysql"}}), -- for sql
+        diagnostics.luacheck.with({extra_args = {"--ignore", "vim", "--max-line-length", "128"}}) -- for lua
         -- diagnostics.ruff
         -- completion.vsnip
     }

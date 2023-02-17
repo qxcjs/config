@@ -165,8 +165,11 @@ nvim_map("n", "<leader>tf", "<cmd>ToggleTerm direction=float<cr>", {desc = "Term
 nvim_map("n", "<leader>th", "<cmd>ToggleTerm size=10 direction=horizontal<cr>", {desc = "Terminal horizontal split on bottom"})
 nvim_map("n", "<leader>tv", "<cmd>ToggleTerm size=10 direction=vertical<cr>", {desc = "Terminal vertical split on left"})
 -- map("n", "<leader>tt", "<cmd>ToggleTerm size=15 direction=horizontal<cr>", {desc = "Toggle terminal on normal mode"})
+-- nvim_map("n", "<leader>tt",
+--          ":let $BUF_DIR=expand('%:p:h') | :ToggleTerm size=15 direction=horizontal dir=$BUF_DIR<cr> cd $BUF_DIR <CR>",
+--          {desc = "Toggle terminal on normal mode"})
 nvim_map("n", "<leader>tt",
-         ":let $BUF_DIR=expand('%:p:h') | :ToggleTerm size=15 direction=horizontal dir=$BUF_DIR<cr> cd $BUF_DIR <CR>",
+         ":let $BUF_DIR=expand('%:p:h') | :ToggleTerm size=15 direction=horizontal dir=$BUF_DIR<cr>",
          {desc = "Toggle terminal on normal mode"})
 -- map("t", "<leader>tt", "<cmd>ToggleTerm size=15 direction=horizontal<cr>",
 --     { desc = "Toggle terminal on terminal mode" })
