@@ -37,7 +37,7 @@ null_ls.setup {
     -- 保存自动格式化
     -- on_attach = function(client)
     --     if client.server_capabilities.documentFormattingProvider then
-    --         vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()")
+    --         vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format{timeout_ms = 5000,async = true}")
     --     end
     -- end
 }

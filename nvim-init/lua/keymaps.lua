@@ -168,8 +168,7 @@ nvim_map("n", "<leader>tv", "<cmd>ToggleTerm size=10 direction=vertical<cr>", {d
 -- nvim_map("n", "<leader>tt",
 --          ":let $BUF_DIR=expand('%:p:h') | :ToggleTerm size=15 direction=horizontal dir=$BUF_DIR<cr> cd $BUF_DIR <CR>",
 --          {desc = "Toggle terminal on normal mode"})
-nvim_map("n", "<leader>tt",
-         ":let $BUF_DIR=expand('%:p:h') | :ToggleTerm size=15 direction=horizontal dir=$BUF_DIR<cr>",
+nvim_map("n", "<leader>tt", ":let $BUF_DIR=expand('%:p:h') | :ToggleTerm size=15 direction=horizontal dir=$BUF_DIR<cr>",
          {desc = "Toggle terminal on normal mode"})
 -- map("t", "<leader>tt", "<cmd>ToggleTerm size=15 direction=horizontal<cr>",
 --     { desc = "Toggle terminal on terminal mode" })
@@ -178,7 +177,7 @@ nvim_map("t", "<Esc>", "<c-\\><c-n>", {desc = "change to normal mode in terminal
 -- =======================================================================================
 -- LSP
 -- =======================================================================================
-nvim_map("n", "==", ":lua vim.lsp.buf.format{timeout_ms = 5000,async = true}<CR>", {desc = "formatting"})
+nvim_map("n", "==", ":lua vim.lsp.buf.format{timeout_ms = 5000,async = false}<CR> | :w<CR>", {desc = "formatting"})
 
 pluginKeys.mapLSP = function(mapbuf)
     -- go xx
