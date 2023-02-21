@@ -12,25 +12,17 @@ end
 --
 -- https://github.com/microsoft/pyright/blob/main/docs/settings.md
 local pyright_settings = {
-    -- settings = {
-    --     python = {
-    --         extraPaths = {"__pypackages__/3.10/lib/"},
-    --         analysis = {
-    --             autoSearchPaths = true,
-    --             diagnosticMode = "openFilesOnly",
-    --             useLibraryCodeForTypes = false,
-    --             typeCheckingMode = "off",
-    --             -- 不知道为什么不生效
-    --             diagnosticSeverityOverrides = {
-    --                 reportUnusedVariable = "none",
-    --                 reportUndefinedVariable = "none",
-    --                 reportUnusedExpression = "none",
-    --                 reportMissingTypeStubs = "none",
-    --                 reportMissingImports = "none"
-    --             }
-    --         }
-    --     }
-    -- }
+    settings = {
+        python = {
+            -- extraPaths = {"__pypackages__/3.10/lib/"},
+            analysis = {
+                autoSearchPaths = true,
+                diagnosticMode = "openFilesOnly",
+                useLibraryCodeForTypes = false,
+                typeCheckingMode = "off",
+            }
+        }
+    }
 }
 
 local on_attach = function(client, bufnr)
