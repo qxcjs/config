@@ -80,6 +80,8 @@ packer.startup({
         -- LSP pretty show diagnostics, references, telescope results, quickfix and location lists
         -- use {'folke/trouble.nvim', requires = {'kyazdani42/nvim-web-devicons'}}
 
+        use({"jose-elias-alvarez/nvim-lsp-ts-utils", requires = "nvim-lua/plenary.nvim"})
+
         use {"jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim"}
 
         -- use({
