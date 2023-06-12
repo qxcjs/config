@@ -47,6 +47,9 @@ packer.startup({
         -- 注释
         use 'numToStr/Comment.nvim'
 
+        -- 实时查看lua脚本的输出
+        use 'rafcamlet/nvim-luapad'
+
         -- quick search
         use {'nvim-telescope/telescope.nvim', requires = {"nvim-lua/plenary.nvim", "kyazdani42/nvim-web-devicons"}}
 
@@ -63,6 +66,7 @@ packer.startup({
         use "lukas-reineke/indent-blankline.nvim"
 
         -- 补全
+        use { "folke/neodev.nvim", opts = {} } -- nvim lua api 补全
         use "hrsh7th/cmp-nvim-lsp" -- {name = nvim_lsp}
         use "hrsh7th/cmp-buffer" -- {name = buffer}
         use "hrsh7th/cmp-path" -- {name = path}
