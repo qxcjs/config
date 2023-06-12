@@ -8,7 +8,26 @@ end
 
 -- 列表操作快捷键
 local list_keys = require('keymaps').nvimTreeList
+
+local function my_on_attach(bufnr)
+  local api = require "nvim-tree.api"
+
+  local function opts(desc)
+    return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+  end
+
+  -- default mappings
+  api.config.mappings.default_on_attach(bufnr)
+
+  -- custom mappings
+  vim.keymap.set('n', '<C-t>', api.tree.change_root_to_parent,        opts('Up'))
+  vim.keymap.set('n', '?',     api.tree.toggle_help,                  opts('Help'))
+  -- list_keys
+end
+
 nvim_tree.setup({
+
+    on_attach = my_on_attach,
     -- root_dirs = {".git"},
     -- 不显示 git 状态图标
     git = {enable = false},
@@ -34,7 +53,7 @@ nvim_tree.setup({
         -- 隐藏根目录
         hide_root_folder = false,
         -- 自定义列表中快捷键
-        mappings = {custom_only = false, list = list_keys},
+        -- mappings = {custom_only = false, list = list_keys},
         -- 不显示行数
         number = false,
         relativenumber = false,
