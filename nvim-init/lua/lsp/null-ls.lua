@@ -33,6 +33,7 @@ null_ls.setup {
         }), -- formatting.fixjson,
         formatting.black.with({extra_args = {"--fast"}}), -- for python
         formatting.sql_formatter.with({extra_args = {"--language", "sqlite"}}), -- for sql
+        -- formatting.sqlfluff.with({extra_args = {"--dialect", "sqlite"}}), -- for sql
         diagnostics.luacheck.with({extra_args = {"--ignore", "vim", "--max-line-length", "128"}}), -- for lua
         diagnostics.ruff
         -- completion.vsnip

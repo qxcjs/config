@@ -19,7 +19,7 @@ local pyright_settings = {
                 autoSearchPaths = true,
                 diagnosticMode = "openFilesOnly",
                 useLibraryCodeForTypes = false,
-                typeCheckingMode = "off",
+                typeCheckingMode = "off"
             }
         }
     }

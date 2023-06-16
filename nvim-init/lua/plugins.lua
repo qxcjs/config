@@ -16,6 +16,7 @@ end
 local packer = require("packer")
 packer.startup({
     function(use)
+        use 'rafcamlet/nvim-whid'
         -- Packer 包管理器
         use 'wbthomason/packer.nvim'
         -- 主题
@@ -33,13 +34,13 @@ packer.startup({
         use {"akinsho/toggleterm.nvim", tag = 'v2.2.1'}
 
         -- 左侧树
-        use {"kyazdani42/nvim-tree.lua", requires = {"kyazdani42/nvim-web-devicons", "ahmedkhalf/project.nvim"}}
+        use {"nvim-tree/nvim-tree.lua", requires = {"nvim-tree/nvim-web-devicons", "ahmedkhalf/project.nvim"}}
 
         -- tab 展示
-        use {"akinsho/bufferline.nvim", requires = {"kyazdani42/nvim-web-devicons", "moll/vim-bbye"}}
+        use {"akinsho/bufferline.nvim", requires = {"nvim-tree/nvim-web-devicons", "moll/vim-bbye"}}
 
         -- status 状态栏展示
-        use {"nvim-lualine/lualine.nvim", requires = {"kyazdani42/nvim-web-devicons", "arkav/lualine-lsp-progress"}}
+        use {"nvim-lualine/lualine.nvim", requires = {"nvim-tree/nvim-web-devicons", "arkav/lualine-lsp-progress"}}
 
         -- 括号补全 depend nvim-cmp
         use {"windwp/nvim-autopairs", requires = {"hrsh7th/nvim-cmp"}}
@@ -51,7 +52,7 @@ packer.startup({
         use 'rafcamlet/nvim-luapad'
 
         -- quick search
-        use {'nvim-telescope/telescope.nvim', requires = {"nvim-lua/plenary.nvim", "kyazdani42/nvim-web-devicons"}}
+        use {'nvim-telescope/telescope.nvim', requires = {"nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons"}}
 
         -- 代码高亮, 增量选择, 自动缩进等功能
         -- use {
@@ -66,7 +67,7 @@ packer.startup({
         use "lukas-reineke/indent-blankline.nvim"
 
         -- 补全
-        use { "folke/neodev.nvim", opts = {} } -- nvim lua api 补全
+        use {"folke/neodev.nvim", opts = {}} -- nvim lua api 补全
         use "hrsh7th/cmp-nvim-lsp" -- {name = nvim_lsp}
         use "hrsh7th/cmp-buffer" -- {name = buffer}
         use "hrsh7th/cmp-path" -- {name = path}
@@ -82,7 +83,7 @@ packer.startup({
         use 'onsails/lspkind-nvim'
 
         -- LSP pretty show diagnostics, references, telescope results, quickfix and location lists
-        -- use {'folke/trouble.nvim', requires = {'kyazdani42/nvim-web-devicons'}}
+        -- use {'folke/trouble.nvim', requires = {'nvim-tree/nvim-web-devicons'}}
 
         use({"jose-elias-alvarez/nvim-lsp-ts-utils", requires = "nvim-lua/plenary.nvim"})
 

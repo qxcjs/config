@@ -100,8 +100,8 @@ nvim_map("n", "<leader>sv", "<C-w>t<C-w>H", {desc = "go to top window then move 
 
 nvim_map("n", "<C-A-n>", "<C-w>w", {desc = "Move cursor to window below/right of the current one"})
 nvim_map("n", "<C-A-p>", "<C-w>W", {desc = "Move cursor to window above/left of the current one"})
-nvim_map("n", "<A-j>", "<C-w>k", {desc = "Move cursor to below window"})
-nvim_map("n", "<A-k>", "<C-w>j", {desc = "Move cursor to above window"})
+nvim_map("n", "<A-k>", "<C-w>k", {desc = "Move cursor to below window"})
+nvim_map("n", "<A-j>", "<C-w>j", {desc = "Move cursor to above window"})
 nvim_map("n", "<A-h>", "<C-w>h", {desc = "Move cursor to left window"})
 nvim_map("n", "<A-l>", "<C-w>l", {desc = "Move cursor to right window"})
 

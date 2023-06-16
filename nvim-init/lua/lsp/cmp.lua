@@ -49,6 +49,7 @@ cmp.setup({
             vim.fn["vsnip#anonymous"](args.body)
         end
     },
+    window = {completion = cmp.config.window.bordered(), documentation = cmp.config.window.bordered()},
     -- 补全源
     -- 为什么要用 {} 分组 ? 不分组 snip 出不来
     -- sources = cmp.config.sources({
