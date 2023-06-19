@@ -7,8 +7,8 @@ end
 
 mason_lspconfig.setup({
     ensure_installed = {
-        -- "lua-language-server", "pyright", "taplo", "css-lsp", "html-lsp", "json-lsp", "typescript-language-server"
-        "lua_ls", "pyright", "taplo", "cssls", "html", "jsonls", "tsserver", "ruff_lsp"
+        -- "lua-language-server", "pyright", "taplo", "css-lsp", "html-lsp", "json-lsp", "typescript-language-server","ruff_lsp"
+        "lua_ls", "pyright", "taplo", "cssls", "html", "jsonls", "tsserver"
     }
 })
 --  Mason 无法自动下载 lsp 以外的 linter formatter 等插件, 自定义命令通过Mason 下载 linter formatter 等插件
