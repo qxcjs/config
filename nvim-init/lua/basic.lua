@@ -4,7 +4,6 @@
 -- vim.t: 选项卡变量
 -- vim.v: 预定义变量
 -- vim.env: 环境变量
-
 -- vim.o: 行为类似于 :let &{option-name}
 -- vim.go: 行为类似于 :let &g:{option-name}
 -- vim.bo: 适用于 buffer-local 选项，行为类似于 :let &l:{option-name}
@@ -13,9 +12,9 @@
 -- vim.opt*
 --
 -- utf8
-vim.g.encoding = "UTF-8"
-vim.o.fileencoding = "utf-8"
-vim.o.fileencodings = "ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1"
+vim.g.encoding = "utf-8"
+vim.g.fileencoding = "utf-8"
+-- vim.o.fileencodings = "ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1"
 -- jkhl 移动时光标周围保留8行
 vim.o.scrolloff = 8
 vim.o.sidescrolloff = 8
@@ -99,6 +98,5 @@ vim.o.mouse = ""
 
 -- https://vim.fandom.com/wiki/Set_working_directory_to_the_current_file
 -- vim.g.autochdir=true
-
 
 vim.lsp.set_log_level("info")

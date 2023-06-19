@@ -52,7 +52,10 @@ packer.startup({
         use 'rafcamlet/nvim-luapad'
 
         -- quick search
-        use {'nvim-telescope/telescope.nvim', requires = {"nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons"}}
+        use {
+            'nvim-telescope/telescope.nvim',
+            requires = {"nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons", "stevearc/aerial.nvim"}
+        }
 
         -- 代码高亮, 增量选择, 自动缩进等功能
         -- use {
@@ -100,7 +103,13 @@ packer.startup({
         -- use "mfussenegger/nvim-jdtls"
         if install_plugins then require('packer').sync() end
     end,
-    config = {display = {open_fn = function() return require("packer.util").float({border = "single"}) end}}
+    config = {
+        display = {
+            open_fn = function()
+                return require("packer.util").float({border = "single"})
+            end
+        }
+    }
 })
 
 -- 保存时自动下载插件

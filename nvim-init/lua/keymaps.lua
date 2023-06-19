@@ -11,6 +11,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- vim.keymap.set() 是  vim.api.nvim_set_keymap() 的语法糖
 local vim_map = function(mode, lhs, rhs, opts)
     local options = {noremap = true, silent = true}
     if opts then options = vim.tbl_extend("force", options, opts) end
@@ -34,12 +35,10 @@ nvim_map("n", "<leader>so", ":so " .. vim.g.nvim_init_home .. "/init.vim<CR>", {
 -- map("c", "<C-k>", "<C-p>", {noremap = false})
 
 -- 保存退出
-nvim_map("n", "<leader>w", "<cmd>w<CR>", {desc = "Save"})
-nvim_map("n", "<leader>q", ":q<CR>", {desc = "Quit"})
 nvim_map("n", "<C-q>", ":q!<CR>", {desc = "Force Quit"})
 nvim_map("n", "<C-s>", ":w!<CR>", {desc = "Force Save"})
-nvim_map("n", "<leader>wa", ":wqa!<CR>", {desc = "Force Save All"})
-nvim_map("n", "<leader>qa", ":qa!<CR>", {desc = "Force Quit All"})
+-- nvim_map("n", "<leader>wa", ":wqa!<CR>", {desc = "Force Save All"})
+-- nvim_map("n", "<leader>qa", ":qa!<CR>", {desc = "Force Quit All"})
 
 -- 在visual 模式里粘贴后不要复制覆盖的内容
 nvim_map("v", "p", '"_dP')
@@ -186,6 +185,7 @@ pluginKeys.mapLSP = function(mapbuf)
     mapbuf("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", options)
     mapbuf("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", options)
     mapbuf("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", options)
+    -- 重复按两次命令可以跳入 hover 弹除的悬浮窗中使用移动命令
     mapbuf("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", options)
     mapbuf("n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", options)
 
@@ -193,7 +193,7 @@ pluginKeys.mapLSP = function(mapbuf)
     mapbuf("n", "<leader>eo", "<cmd>lua vim.diagnostic.open_float()<CR>", options) -- 窗口中显示告警信息
     mapbuf("n", "<leader>ep", "<cmd>lua vim.diagnostic.goto_prev()<CR>", options)
     mapbuf("n", "<leader>en", "<cmd>lua vim.diagnostic.goto_next()<CR>", options)
-    -- mapbuf('n', '<leader>el', '<cmd>lua vim.diagnostic.setloclist()<CR>', opt) -- 显示告警列表
+    mapbuf('n', '<leader>el', '<cmd>lua vim.diagnostic.setloclist()<CR>', options) -- 显示告警列表
     mapbuf("n", "<S-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", options)
     mapbuf('n', '<S-d>', '<cmd>lua vim.lsp.buf.type_definition()<CR>', options)
 
@@ -236,14 +236,15 @@ nvim_map("n", "<leader>fh", ":Telescope help_tags<CR>", {desc = "Telescope help_
 local builtin = require('telescope.builtin')
 
 vim_map('n', '<leader>tgi', builtin.lsp_implementations, {desc = "Lists LSP references for word under the cursor [Telescope]"})
-vim_map('n', '<leader>tgd', function() builtin.lsp_definitions({show_line = false, fname_width = 15, trim_text = true}) end,
-        {desc = "Goto the definition of the word under the cursor [Telescope]"})
+vim_map('n', '<leader>tgd', function()
+    builtin.lsp_definitions({show_line = false, fname_width = 15, trim_text = true})
+end, {desc = "Goto the definition of the word under the cursor [Telescope]"})
 vim_map('n', '<leader>tgt', builtin.lsp_type_definitions,
         {desc = "Goto the definition of the type of the word under the cursor [Telescope]"})
 -- vim_map('n', '<leader>tlr', builtin.lsp_references, {desc = "Lists LSP references for word under the cursor [Telescope]"})
-vim_map('n', '<leader>tlr',
-        function() builtin.lsp_references({jump_type = 'never', show_line = false, fname_width = 15, trim_text = true}) end,
-        {desc = "Lists LSP references for word under the cursor [Telescope]"})
+vim_map('n', '<leader>tlr', function()
+    builtin.lsp_references({jump_type = 'never', show_line = false, fname_width = 15, trim_text = true})
+end, {desc = "Lists LSP references for word under the cursor [Telescope]"})
 vim_map('n', '<leader>tls', builtin.lsp_document_symbols,
         {desc = "Lists LSP document symbols in the current buffer [Telescope]"})
 vim_map('n', '<leader>tli', builtin.lsp_incoming_calls,

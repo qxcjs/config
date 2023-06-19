@@ -20,7 +20,7 @@ null_ls.setup {
         -- Formatting
         formatting.ruff, -- for python
         formatting.shfmt, -- for shell
-        formatting.lua_format.with({extra_args = {"--column-limit=128"}}), -- for lua
+        formatting.lua_format.with({extra_args = {"--column-limit=128", "--no-keep-simple-function-one-line"}}), -- for lua
         -- formatting.stylua.with({extra_args = {"--column-width=150"}}), -- for lua
         -- formatting.flake8,
         formatting.taplo, -- for .toml
