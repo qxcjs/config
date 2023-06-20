@@ -78,8 +78,6 @@ nvim_map("v", "<C-k>", "5k")
 -- =======================================================================================
 -- jump
 -- =======================================================================================
-vim_map('n', '<leader>tjl', "<cmd>lua require('telescope.builtin').jumplist({show_line=true, trim_text=true}) <CR>",
-        {desc = "Lists items from Vim's jumplist, jumps to location on"})
 -- vim_map('n', '<leader>b', "<Ctrl-O>", {desc = "Back"})
 -- vim_map('n', '<leader>f', "<Ctrl-I>", {desc = "Forword"})
 
@@ -200,7 +198,7 @@ pluginKeys.mapLSP = function(mapbuf)
     -- workspace
     -- mapbuf('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opt)
     -- mapbuf('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opt)
-    mapbuf('n', '<space>lw', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', options)
+    mapbuf('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', options)
 
     -- rename
     mapbuf("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", options)
@@ -227,6 +225,9 @@ end
 -- Telescope
 -- =======================================================================================
 
+vim_map('n', '<leader>tjl', "<cmd>lua require('telescope.builtin').jumplist({show_line=true, trim_text=true}) <CR>",
+        {desc = "Lists items from Vim's jumplist, jumps to location on"})
+
 nvim_map("n", "<leader>ff", ":Telescope find_files<CR>", {desc = "Telescope find_files"})
 nvim_map("n", "<leader>fe", ":Telescope oldfiles<CR> <ESC>", {desc = "Telescope oldfiles"})
 nvim_map("n", "<leader>fb", ":Telescope buffers<CR> <ESC>", {desc = "Telescope buffers"})
@@ -236,23 +237,27 @@ nvim_map("n", "<leader>fh", ":Telescope help_tags<CR>", {desc = "Telescope help_
 local builtin = require('telescope.builtin')
 
 vim_map('n', '<leader>tgi', builtin.lsp_implementations, {desc = "Lists LSP references for word under the cursor [Telescope]"})
+
 vim_map('n', '<leader>tgd', function()
     builtin.lsp_definitions({show_line = false, fname_width = 15, trim_text = true})
-end, {desc = "Goto the definition of the word under the cursor [Telescope]"})
-vim_map('n', '<leader>tgt', builtin.lsp_type_definitions,
-        {desc = "Goto the definition of the type of the word under the cursor [Telescope]"})
--- vim_map('n', '<leader>tlr', builtin.lsp_references, {desc = "Lists LSP references for word under the cursor [Telescope]"})
+end, {desc = "Goto the definition [Telescope]"})
+
+vim_map('n', '<leader>tgt', builtin.lsp_type_definitions, {desc = "Goto the definition [Telescope]"})
+-- vim_map('n', '<leader>tlr', builtin.lsp_references, {desc = "Lists LSP references [Telescope]"})
+
+-- 查看变量在哪里被引用了
 vim_map('n', '<leader>tlr', function()
     builtin.lsp_references({jump_type = 'never', show_line = false, fname_width = 15, trim_text = true})
-end, {desc = "Lists LSP references for word under the cursor [Telescope]"})
+end, {desc = "Lists LSP references [Telescope]"})
+
 vim_map('n', '<leader>tls', builtin.lsp_document_symbols,
         {desc = "Lists LSP document symbols in the current buffer [Telescope]"})
-vim_map('n', '<leader>tli', builtin.lsp_incoming_calls,
-        {desc = "Lists LSP incoming calls for word under the cursor [Telescope]"})
-vim_map('n', '<leader>tlo', builtin.lsp_outgoing_calls,
-        {desc = "Lists LSP outgoing calls for word under the cursor [Telescope]"})
+
+vim_map('n', '<leader>tli', builtin.lsp_incoming_calls, {desc = "Lists LSP incoming calls [Telescope]"})
+vim_map('n', '<leader>tlo', builtin.lsp_outgoing_calls, {desc = "Lists LSP outgoing calls [Telescope]"})
+
 nvim_map('n', '<leader>tle', "<cmd>lua require('telescope.builtin').diagnostics({bufnr = 0})<CR>",
-         {desc = "Lists Diagnostics for current open buffer [Telescope]"})
+         {desc = "Lists Diagnostics for current buffer [Telescope]"})
 
 pluginKeys.telescopeList = {
     i = {

@@ -45,6 +45,9 @@ packer.startup({
         -- 括号补全 depend nvim-cmp
         use {"windwp/nvim-autopairs", requires = {"hrsh7th/nvim-cmp"}}
 
+        -- 消息通知
+        use {'rcarriga/nvim-notify'}
+
         -- 注释
         use 'numToStr/Comment.nvim'
 
@@ -58,12 +61,12 @@ packer.startup({
         }
 
         -- 代码高亮, 增量选择, 自动缩进等功能
-        -- use {
-        --     "nvim-treesitter/nvim-treesitter",
-        --     run = ":TSUpdate",
-        --     requires = {{"nvim-treesitter/nvim-treesitter-textobjects"}, {"nvim-treesitter/nvim-treesitter-context"}}
-        -- }
-        --
+        use {
+            "nvim-treesitter/nvim-treesitter"
+            --     run = ":TSUpdate",
+            --     requires = {{"nvim-treesitter/nvim-treesitter-textobjects"}, {"nvim-treesitter/nvim-treesitter-context"}}
+        }
+
         -- LSP
         use {"williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim", "neovim/nvim-lspconfig"}
 

@@ -30,6 +30,7 @@ lua require('keymaps')
 " plugin
 lua require('plugins')
 lua require("plugin-config.which-key")
+lua require("plugin-config.nvim-notify")
 lua require("plugin-config.indent-blankline")
 lua require("plugin-config.toggleterm")
 lua require("plugin-config.nvim-autopairs")
