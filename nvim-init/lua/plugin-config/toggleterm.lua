@@ -25,10 +25,19 @@ toggleterm.setup({
         -- print(vim.cmd("!echo %:p:h"))
         -- term:change_dir("/mnt/f/GitWorkspace/config/")
         -- term:change_dir(vim.loop.cwd())
+        -- vim.notify(vim.cmd("ls"), vim.log.levels.INFO)
+        -- vim.api.nvim_exec("ls", true)
+        vim.notify(vim.api.nvim_command_output("ls"), vim.log.levels.INFO)
+
         local active_bufnr = vim.fn.bufnr("a")
-        active_bufnr = active_bufnr == -1 or vim.fn.bufnr("#")
+        vim.notify(string.format('active bufnr num %s', active_bufnr), vim.log.levels.INFO)
+
+        if active_bufnr == -1 then active_bufnr = vim.fn.bufnr("#") end
+        -- active_bufnr = active_bufnr == -1 or vim.fn.bufnr("#")
+        vim.notify(string.format('active bufnr num %s', active_bufnr), vim.log.levels.INFO)
         -- print(active_bufnr)
         local buf_path = vim.fn.expand('#' .. active_bufnr .. ":p:h")
+        vim.notify(string.format('active bufnr path %s', buf_path), vim.log.levels.INFO)
         -- print(path)
         -- 打开 terminal 时进入当前激活 buffer 所在目录
         term:change_dir(buf_path)

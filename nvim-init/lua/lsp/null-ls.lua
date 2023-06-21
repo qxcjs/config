@@ -32,7 +32,7 @@ null_ls.setup {
             prefer_local = "node_modules/.bin"
         }), -- formatting.fixjson,
         formatting.black.with({extra_args = {"--fast"}}), -- for python
-        formatting.sql_formatter.with({extra_args = {"--language", "sqlite"}}), -- for sql
+        formatting.sql_formatter.with({extra_args = {"--language", "sqlite", "--expressionWidth", "100"}}), -- for sql
         -- formatting.sqlfluff.with({extra_args = {"--dialect", "sqlite"}}), -- for sql
         diagnostics.luacheck.with({extra_args = {"--ignore", "vim", "--max-line-length", "128"}}), -- for lua
         diagnostics.ruff
@@ -50,7 +50,9 @@ null_ls.setup {
             vim.api.nvim_create_autocmd("BufWritePre", {
                 group = augroup,
                 buffer = bufnr,
-                callback = function() vim.lsp.buf.format({bufnr = bufnr}) end
+                callback = function()
+                    vim.lsp.buf.format({bufnr = bufnr})
+                end
             })
         end
     end
