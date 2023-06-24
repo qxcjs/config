@@ -32,7 +32,9 @@ null_ls.setup {
             prefer_local = "node_modules/.bin"
         }), -- formatting.fixjson,
         formatting.black.with({extra_args = {"--fast"}}), -- for python
-        formatting.sql_formatter.with({extra_args = {"--language", "sqlite", "--expressionWidth", "100"}}), -- for sql
+        formatting.sql_formatter.with({
+            extra_args = {"--language", "sqlite", "--config", vim.g.nvim_init_home .. "/conf/sql-formatter.json"}
+        }), -- for sql
         -- formatting.sqlfluff.with({extra_args = {"--dialect", "sqlite"}}), -- for sql
         diagnostics.luacheck.with({extra_args = {"--ignore", "vim", "--max-line-length", "128"}}), -- for lua
         diagnostics.ruff
