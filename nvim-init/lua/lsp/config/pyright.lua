@@ -18,7 +18,7 @@ local pyright_settings = {
             analysis = {
                 autoSearchPaths = true,
                 diagnosticMode = "openFilesOnly",
-                useLibraryCodeForTypes = false,
+                useLibraryCodeForTypes = true,
                 typeCheckingMode = "off"
             }
         }
@@ -39,7 +39,9 @@ local on_attach = function(client, bufnr)
         vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = hl})
     end
     -- 绑定快捷键
-    local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+    local function buf_set_keymap(...)
+        vim.api.nvim_buf_set_keymap(bufnr, ...)
+    end
     require('keymaps').mapLSP(buf_set_keymap)
 end
 
